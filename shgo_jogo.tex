@@ -1,0 +1,160 @@
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed, draft]{svjour3}     % onecolumn (ditto)
+\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+%\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+
+%\smartqed  % flush right qed marks, e.g. at end of proof
+%\usepackage{graphicx}
+%\usepackage{mathptmx}      % use Times fonts if available on your TeX system
+\usepackage{newtxtext}
+%\usepackage{newtxmath}   % Not compiling
+
+\usepackage[version=3]{mhchem}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{lscape}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+%\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{longtable}
+%\usepackage{titling}
+\usepackage[space]{grffile}
+\usepackage[numbers]{natbib}
+\setcitestyle{square}
+\usepackage[utf8]{inputenc} 
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage[toc, page]{appendix}
+\usepackage{subfiles}
+\usepackage{authblk}
+
+
+
+% Algortihm pseudo code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pifont}
+
+% bmatrix seperator
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% Renew autoref section commands
+\def\sectionautorefname{Section}
+\let\subsectionautorefname\sectionautorefname
+\let\subsubsectionautorefname\sectionautorefname
+
+
+\journalname{J Glob Optim}
+
+% Author affiliations
+\newcommand*{\affaddr}[1]{#1} % No op here. Customize it for different styles.
+\newcommand*{\affmark}[1][*]{\textsuperscript{#1}}
+
+
+\begin{document}
+\title{A simplicial homology algorithm for Lipschitz optimisation}
+\author[1]{Stefan~C.~Endres\affmark[1]
+\and Carl~Sandrock\affmark[1]
+\and Walter~W.~Focke\affmark[1]
+}
+
+%\authorrunning{Short form of author list} % if too long for running head}
+\institute{S. C. Endres %\at{Institute of Applied Materials, Department of Chemical Engineering, University of Pretoria} \\ 
+\at
+              \email{stefan.c.endres@gmail.com}           
+%             \emph{Present address:} of F. Author  %  if needed
+           \and
+          C. Sandrock %\at Institute of Applied Materials, Department of Chemical Engineering, University of Pretoria \\
+          \at
+         \email{carl.sandrock@up.ac.za} 
+          \and
+          W. W. Focke %\at Institute of Applied Materials, Department of Chemical Engineering, University of Pretoria \\
+          \at
+           \email{walter.focke@up.ac.za} \\ \\
+\affaddr{\affmark[1]Institute of Applied Materials, Department of Chemical Engineering, University of Pretoria}
+}	
+\date{Received: date / Accepted: date}
+% The correct dates will be entered by the editor
+
+\maketitle
+
+\begin{abstract}
+The simplicial homology global optimisation (SHGO) algorithm is a general purpose global optimisation algorithm based on applications of simplicial integral homology and combinatorial topology. SHGO approximates the homology groups of a complex built on a hypersurface homeomorphic to a complex on the objective function. This provides both approximations of locally convex subdomains in the search space through Sperner's lemma (\citeauthor{Sperner1928}, \citeyear{Sperner1928}) and a useful visual tool for characterising and efficiently solving higher dimensional black and grey box optimisation problems. This complex is built up using sampling points within the feasible search space as vertices. The algorithm is specialised in finding all the local minima of an objective function with expensive function evaluations efficiently which is especially suitable to applications such as energy landscape exploration. SHGO was initially developed as an improvement on the topographical global optimisation (TGO) method first proposed by \citeauthor{Torn1986} (\citeyear{Torn1986, Torn1990, Torn1992}). It is proven that the SHGO algorithm will always outperform TGO on function evaluations if the objective function is Lipschitz smooth. In this paper SHGO is applied to non-convex problems with linear and box constraints with bounds placed on the variables. Numerical experiments on linearly constrained test problems show that SHGO gives competitive results compared to TGO and the recently developed Lc-DISIMPL algorithm (\citeauthor{Paul2016}, \citeyear{Paul2016}) as well as the PSwarm and DIRECT-L1 algorithms. Furthermore SHGO is compared with the TGO, basinhopping (BH) and differential evolution (DE) global optimisation algorithms over a large selection of black-box problems with bounds placed on the variables from the SciPy (\citeauthor*{scipy}, \citeyear{scipy}) benchmarking test suite. A Python implementation of the SHGO and TGO algorithms published under a MIT license can be found from \url{https://bitbucket.org/upiamcompthermo/shgo/}.
+
+%over a large selection of problems from the SciPy (\citeauthor*{scipy}, \citeyear{scipy}) global optimisation benchmarking test suite we compare SHGO with the TGO, basinhopping (BH) and differential evolution (DE) global optimisation algorithms. Overall results showed that SHGO found more unique local minima relative to TGO using less function evaluations.
+
+
+
+\keywords{Global optimisation\and SHGO \and Computational homology}
+\begin{flushleft}\bf{Mathematics Subject Classification (2010)} \normalfont 90C26 Nonconvex programming, global optimisation
+\end{flushleft}
+\end{abstract}
+% \PACS{PACS code1 \and PACS code2 \and more}
+%\subclass{90C26  	Nonconvex programming, global optimisation}
+
+
+%\section{Introduction}
+\subfile{./intro.tex}
+
+%\section{TGO}
+\subfile{./tgo.tex}
+
+%\section{Motivation}
+\subfile{./motivation.tex}
+
+%\section{Axial}
+\subfile{./axial.tex}
+
+%\section{shgo}
+\subfile{./shgo1.tex}
+\subfile{./shgo2.tex}
+
+%\section{Results}
+\subfile{./results.tex}
+
+%\section{Conclusion}
+\subfile{./conc.tex}
+
+% Declarations 
+\section*{Acknowledgments}
+\paragraph{Funding:} The financial assistance of the National Research Foundation (NRF) towards this research is hereby acknowledged. Opinions expressed and conclusions arrived at, are those of the authors and are not necessarily to be attributed to the NRF. (NRF grant number 92781 Competitive Programme for Rated Researchers (Grant Holder WW Focke)).
+
+The authors would also like to extend our gratitude to the anonymous reviewers and the editor whose detailed reports and suggestions helped to improve the paper.
+
+\paragraph{Conflict of Interest:} The authors declare that they have no conflict of interest.
+
+% BibTeX users please use one of
+%\bibliographystyle{spbasic}      % basic style, author-year citations
+%\bibliographystyle{spmpsci}      % mathematics and physical sciences
+%\bibliographystyle{spphys}       % APS-like style for physics
+%\bibliography{}   % name your BibTeX data base
+
+%\pagebreak
+% \bibliographystyle{spbasic}    % This one breaks compilation
+%\bibliographystyle{spmpsci}
+%\bibliographystyle{apalike}
+%\bibliographystyle{plainnat}  % The in text of these styles do not work
+%\bibliographystyle{acm}
+% \bibliographystyle{ieeetr}
+
+\bibliographystyle{abbrvnat}
+
+\bibliography{library}
+
+
+
+
+% Appendix Speed up compilato
+\subfile{./raw.tex}
+
+\end{document} 

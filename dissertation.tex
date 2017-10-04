@@ -1,0 +1,106 @@
+\documentclass[a4paper, 12pt, %
+%draft,%
+pdftex]{report} % make report->book for two sided final publishing.
+%\fussy
+\sloppy
+
+\usepackage{updiss}
+% Cause floats to always be below  where they are inserted as per
+% Prof. de Vaal.
+% \usepackage{flafter}
+\usepackage{fancybox}
+%%%%%%%%%
+
+%\newcommand{\SOtwo}{\ensuremath{\mathrm{SO}_2}}
+%\newcommand{\sappisaiccor}{Sappi~Saiccor}
+%\newcommand{\num}[1]{\ensuremath{\fnum{#1}}}
+\newcommand{\units}[1]{\ensuremath{\mathrm{#1}}}
+
+% Title and author definitions
+\title{A simplicial homology algorithm for Lipschitz optimisation}
+\author{Stefan Endres} 
+\degree{Master of Engineering (Chemical Engineering)} 
+\department{Department of Chemical Engineering} 
+\date{October 2017}
+
+% Include directives
+%\includeonly{
+%front,
+%progress,
+% -- Text Starts --
+%introduction,
+%literature,
+%background,
+%controlanalysis, 
+%current,
+%controllerdesign,
+%montecarlo,
+%program,
+%results, 
+%conclusion,
+% -- Appendix Entries --
+% programlistings,
+%parametervalues,
+%testresults,
+%programmingdetails,
+%back
+%}
+
+\begin{document}
+\include{front}
+
+% Page numbering: Start at 1
+
+\pagestyle{headings}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%\section{Introduction}
+\include{intro}
+
+%\section{TGO}
+\include{tgo}
+
+%\section{Motivation}
+\include{motivation}
+
+%\section{Axial}
+\include{axial}
+
+%\section{shgo}
+\include{shgo1}
+\include{shgo2}
+
+%\section{Results}
+\include{results}
+
+%\section{Conclusion}
+\include{conc}
+
+% Appendix Speed up compilato
+\subfile{./raw.tex}
+
+%\include{introduction}
+%\include{literature}
+%\include{background}
+%\include{controlanalysis}
+%\include{current}
+%\include{controllerdesign}
+%\include{montecarlo}
+%\include{program}
+%\include{results}
+%\include{conclusion}
+
+\appendix
+%\include{programlistings}
+%\include{parametervalues}
+%\include{programmingdetails}
+%\include{testresults}
+
+\bibliography{library}
+%\bibliographystyle{abbrvnat}
+%\bibliographystyle{cheming}
+
+%\printindex
+
+\end{document}
