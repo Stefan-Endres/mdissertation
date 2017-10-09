@@ -1,5 +1,5 @@
-\section{Simplicial Homology Global Optimisation}  \label{sec:shgo}
-\subsection{Overview}
+\chapter{Simplicial Homology Global Optimisation}  \label{sec:shgo}
+\section{Overview}
 The SHGO method strongly relies on constructing a simplicial complex using the sampled points of an objective function $f$ as vertices. From this construction of the complex $\mathcal{H}$ we use the resulting directed subgraph which contains the set of all $1-$chains from the elements of $\mathcal{H}^1 \in \mathcal{H}$ to find minimiser pools using definitions similar to the methods demonstrated in the previous sections. This is accomplished by the application of Sperner's lemma \cite{Sperner1928} allowing us to approximate the domains of stationary points for any objective function in the feasible search space $\Omega$. 
 
 We prove that, if provided with an adequate sampling set, the construction of $\mathcal{H}$ will produce the same homology groups. We use this result to show that for the given sampling set of vertices $\mathcal{H}^0 \in \mathcal{H}$ we always extract the optimal minimiser pool similar to the one-dimensional case described in \autoref{sec:motivation}, but extended to higher dimensions. 
@@ -15,7 +15,7 @@ The algorithm itself consists of four steps which will described in detail:
 We will start by formally defining the construction of $\mathcal{H}$ from a given set of feasible sampling points $\mathcal{P}$ and proving its properties. %In this paper we will consider only a search space defined by a bounded hyperrectangle $\Omega \subseteq  [l, u]^n\subseteq\mathbb{R}^n$ with $\mathcal{P} \in \Omega$. It is easily extended to optimisation problems with simple linear constrains in $\mathbf{g}$ since the resulting space is compact and convex, however, care must taken if $\mathbf{g}$ contains non-trivial, non-linear constraints !!TODO: CITE NEW SECTION PROOF. In the practical implementation of the algorithm non-linear constraints can be defined, however, the properties defined here are not guaranteed.
 
 
-\subsection{Directed simplicial complex approximation of the objective function}
+\section{Directed simplicial complex approximation of the objective function}
 Consider again the general objective function mapping in the continuous domain $f : \mathbb{R}^n \rightarrow \mathbb{R}$. The purpose of this section is describe a discrete mapping $h: \mathcal{P}\rightarrow \mathcal{H}$ to provide a simplicial approximation for the surface of $f$. To guide the reader the methods will be demonstrated on the simple 2-dimensional optimisation problem defined in Example 4. The use of a 2-dimensional surface allows a demonstration of the techniques while the abstractions defined are readily extended to higher dimensions. 
 
 We start by formally defining the set of vertices from which $0-$chains of the simplicial complex are built and the of edges from which the $1-$chains of $\mathcal{H}$ are built.
@@ -124,7 +124,7 @@ From \autoref{def:h1} we find $\mathcal{H}^0$ from $\mathcal{P}$. Next we use De
 {\caption{A directed complex $\mathcal{H}$ forming a simplicial approximation for an objective function with 150 vertices. There are three minimiser vertices given by the big red dots} \label{fig:alp100}}
 \end{figure}
 
-\subsection{Guarantee of stationary points in sub-domains near minimiser points}
+\section{Guarantee of stationary points in sub-domains near minimiser points}
 This section is devoted to proving the following theorem:
 \begin{theorem} \label{theor:stat}
 %Given a minimiser $v_i \in \mathcal{M} \subseteq \mathcal{H}^0$ on the surface of a continuous, Lipschitz smooth objective function $f$ with a compact bounded domain in $\mathbb{R}^n$ and range $\mathbb{R}$. For any $n-$dimensional $k-$chain $C(\mathcal{H}^k), k = n + 1$ with subset of edges $E \subseteq \{C(\mathcal{H}^k), k = n + 1\}\subset \mathcal{H}^1$. If $v_i$ has incidence on a set of edges $E$, then the chain of simplices containing $E$ defines a $k-$chain $C(\mathcal{D}^k)$, $\mathcal{D}^k \subseteq \mathcal{H}^k$, $k=n+1$ near $v_i$ with every vertex in $C(\mathcal{D}^k)$ connected to $v_i$. There exists at least one stationary point of $f$ within the domain defined by the boundary cycle $\partial(\mathcal{D}^{n + 1})$.
@@ -174,7 +174,7 @@ More explicitly, SHGO currently uses knowledge of the objective function evaluat
 
 
 %%% Invariance
-\subsection{Invariance of the directed complex within a bounded rectangle} \label{sec:invariance}
+\section{Invariance of the directed complex within a bounded rectangle} \label{sec:invariance}
 
 We now have a guarantee of finding stationary points in sub-domains near stationary points. However, we would also like to ensure that SHGO does not generate more than one minimiser starting point per convex sub-domain. This can only be guaranteed when an objective function surface is "adequately sampled". For black box functions there is no way to know if the number and distribution of sampling points is adequate without more information (for example if the number of local minima are known in the problem). However, it is an important property of the algorithm that $|\mathcal{M}|$ will stop increasing with higher sampling after this point. First we define an adequately sampled surface.
 

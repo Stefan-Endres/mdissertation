@@ -1,25 +1,18 @@
-% UP Engineering PhD Thesis style
+% UP Engineering Dissertation style
 % Author: Carl Sandrock
 % To Do
 % - Automatically detect pdfTeX (or lack thereof) and change graphics filetypes accordingly
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{updiss}[2014/01/07 v0.4 University of Pretoria dissertation styles]
-
-% Revision notes:
-% 0.1 Original form
-% 0.2 2010-07-27 Strange error when using the "conny" style in fncychap found and fixed
-% 0.3 2010-10-02 A proper vector macro produced, dfrac renamed.
-% 0.4 2015-01-07 Use ISO date
+\ProvidesPackage{updiss}[2003/03/19 v0.1 University of Pretoria dissertation styles]
 
 % Package includes
 
 % Font encoding and changing
 % \usepackage[T1]{fontenc} % Use T1 fonts
 % \usepackage{pxfonts} % or txfonts for Palantino or Times based font packs
-% Useful for an Afrikaans sinopsis
-\usepackage[iso,english]{isodate}
 
+% Useful for an Afrikaans sinopsis
 \usepackage[afrikaans, english]{babel}
 \selectlanguage{english}
 
@@ -28,46 +21,31 @@
 %\usepackage{pandora} % optima pandora times
 \usepackage[margin={1in, 1in}]{geometry}
 
-\usepackage[longnamesfirst]{natbib}
-  \bibpunct[: ]{(}{)}{;}{a}{,}{,} 
 
-\usepackage{graphicx}
-% Typeset numbers with fancynum with spaces (thinspaces) for thousands seperators 
-% and commas for decimals (french)
-\usepackage[french, thinspaces]{fancynum}
-%\usepackage[english, tight]{fancynum}
 
-% Typeset units correctly.  Default tight spacing inserts halfword
-% space between number and unit.  Use loose for full word.
-\usepackage{units}
+%%%%%%%%%%%%%%%%%%%%% SHGO%%%%%%%%%%%%%%%%%%%%%
+\usepackage{newtxtext}
+%\usepackage[version=3]{mhchem}
+%\usepackage{hyperref}  Already in .sty file
+%\usepackage{booktabs}  Already in .sty file
+\usepackage{siunitx}
+%\usepackage{lscape}  Already in .sty file
+%\usepackage{graphicx}  Already in .sty file
+\usepackage{epstopdf}
 
-%\usepackage{xspace}
+%TODO: Fix these
 \usepackage{amsmath}
 \usepackage{amsthm}
-\usepackage{amsfonts}
-\usepackage{amssymb}
 % theorem environments
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
 \newtheorem{corollary}{Corollary}
+%
 
-\usepackage{color}
-
-\usepackage{subfigure}
-
-% Display captions with the Figure text in boldface (bf), hanging indents and 
-% one size smaller than the rest of the text
-\usepackage[hang, bf, small]{caption}
-
-% There's a subtle interaction between hyperref and algorithm included below, 
-% which can be resolved by including float before hyperref and algorithm after it.
-\usepackage{float}
-
-% Enable hyperlink references in PDF file
-\usepackage[plainpages=false, pdfpagelabels]{hyperref}
-
+\usepackage{amsfonts}
+\usepackage{amssymb}
 
 %\usepackage{longtable}  Already in .sty file
 %%\usepackage{titling}
@@ -86,42 +64,64 @@
 \usepackage{subfiles}
 \usepackage{authblk}
 
-% enable typesetting of algorithm
+% Algortihm pseudo code
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\renewcommand{\Return}[1]{\State \textbf{return}~#1}
 \usepackage{pifont}
+%%%%%%%%%%%%%%%%%%%%% SHGO%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{natbib}
+  \bibpunct[: ]{(}{)}{;}{a}{,}{,} 
+
+\usepackage{graphicx}
+% Typeset numbers with fancynum with spaces (thinspaces) for thousands seperators 
+% and commas for decimals (french)
+\usepackage[french, thinspaces]{fancynum}
+%\usepackage[english, tight]{fancynum}
+
+% Typeset units correctly.  Default tight spacing inserts halfword
+% space between number and unit.  Use loose for full word.
+%\usepackage{units}
+
+%\usepackage{xspace}
+%\usepackage{amssymb}
+
+\usepackage{color}
+
+\usepackage{subfigure} 
+\usepackage{caption}
+
+% Display captions with the Figure text in boldface (bf), hanging indents and 
+% one size smaller than the rest of the text
+% \usepackage[hang, bf, small, subfigure]{caption2} % NOTE: Deprecated
+%\usepackage[hang, bf, small, subfigure]{caption}  % NOTE: New options in caption
+%\usepackage[hang, bf, small]{caption}
+% Enable hyperlink references in PDF file
+
+\usepackage[plainpages=false, pdfpagelabels]{hyperref}
 % For listing of code in the document
+
 \usepackage{listings}
 
 \usepackage{longtable}
 %\usepackage{dropping}
-
 % For nicer table rules 
-\usepackage{booktabs}
 
+\usepackage{booktabs}
 % Set the length of space above \toprule (to stop the table head from colliding with the table):
 \setlength{\abovetopsep}{1em}
 
 % Fancy chapter headings
-\usepackage{fncychap}
-% The conny option was originally used, but the ChTitleUpperCase
-% command commented out below caused a strange error in newer versions
-% of TeXLive.  The following commands seem to work fine.
-\ChNameUpperCase
-\ChNumVar{\Huge}
-%\ChTitleUpperCase
-\ChRuleWidth{2pt}
-\ChNameVar{\centering\Huge\rmfamily\bfseries}
-\ChTitleVar{\centering\Huge\rmfamily}
-%\ChTitleVar{\centering\Huge\mdseries\sffamily}
+\usepackage[Conny]{fncychap}
+\ChTitleVar{\centering\Huge\mdseries\sffamily}
 \ChRuleWidth{1pt}
 \usepackage{fancyhdr}
 
 % Nomenclature list
 \usepackage{nomencl}
-\makenomenclature % required by nomencl -- used to be \makeglossary
+\makeglossary % required by nomencl
 % For indexing of document
 
 \usepackage{makeidx}
@@ -152,16 +152,9 @@
 %       text
 \newcommand{\matlab}{{\scshape Matlab}}
 
-\newcommand\dd{\mathrm{d}}
 % Typeset a differential fraction (dx/dy)
-\newcommand\dxdy[2]{\frac{\dd#1}{\dd#2}}
-
-% Typeset a vector variable 
-\newcommand\vect[1]{\ensuremath{\boldsymbol{#1}}} %(upright and bold)
-% enumerated vector (first, second etc) as per Deb
-\newcommand\varx[1]{\ensuremath{\vect{x}^{(#1)}}}
-\newcommand\dominates{\ensuremath{\preceq}}
-\newcommand\strongdominates{\ensuremath{\prec}}
+%\newcommand\dfrac[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+% Deleted because this breaks amsmath
 
 % Enviroments
 % overview environment for an overview of each chapter
