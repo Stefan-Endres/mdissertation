@@ -16,8 +16,9 @@ The source code used to produce these results including the scripts that run the
 
 \setlength{\tabcolsep}{5.5pt}
 \begin{landscape}
+% \hspace*{-3cm} 
 \begin{table}[htbp]
-\caption{Function evaluation comparisons for test problems with linear constraints. The results for the Lc-DSIMPL, PSwarm and DIRECT-L1 algorithms were taken from \cite{Paul2016}}
+\caption{Function evaluation comparisons for test problems with linear constraints. }%The results for the Lc-DSIMPL, PSwarm and DIRECT-L1 algorithms were taken from \cite{Paul2016}}
 %{\tablinesep=2ex\tabcolsep=10pt
 \begin{tabular}{lrrrrrrrrrrrrrr}
 \toprule
@@ -25,30 +26,30 @@ The source code used to produce these results including the scripts that run the
  & \multicolumn{1}{l}{-simpl}  & \multicolumn{1}{l}{-sobol} & \multicolumn{1}{l}{}  & \multicolumn{1}{l}{-v} & \multicolumn{1}{l}{-c} & \multicolumn{1}{l}{Minimum} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{Average} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{Maximum} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{p.p. = 10} & \multicolumn{1}{l}{p.p. = 10$^2$} & \multicolumn{1}{l}{p.p.=10$^6$} \\  \cmidrule(lr){2-3} \cmidrule(lr){4-4}  \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10} \cmidrule(lr){11-12}  \cmidrule(lr){13-15}
 Problem & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{p.f.e} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{p.f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{p.f.e} & \multicolumn{1}{l}{f.e} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} \\ 
 \midrule
-horst-1  & 97 & 24 & 34 & 7 & 249 & 167 & 182 & 1329$^{b(3)}$ & 1343$^{b(3)}$ & 4100$^{b(3)}$ & 4101$^{b(3)}$ & 287$^a$ & 3689 & >100000 \\[0.05cm]
-horst-2  & 10 & 11 & 11 & 5 & 171 & 160 & 176 & 424 & 492 & 768 & 867 & 265$^a$ & 10829 & >100000 \\[0.05cm]
+horst-1  & 97 & 24 & 34 & 7 & 249 & 167 & 182 & 1329$^{b(3)}$ & 1343$^{b(3)}$ & 4100$^{b(3)}$ & 4101$^{b(3)}$ & 287$^a$ & 3689 & $>$100000 \\[0.05cm]
+horst-2  & 10 & 11 & 11 & 5 & 171 & 160 & 176 & 424 & 492 & 768 & 867 & 265$^a$ & 10829 & $>$100000 \\[0.05cm]
 horst-3  & 6 & 7 &  6 & 5 & 249 & 42 & 43 & 44 & 45 & 46 & 47 & 5$^a$ & 591 & 617 \\[0.05cm]
-horst-4  & 10 & 25 & 24 & 8 & 260 & 90 & 179 & 114 & 194 & 129 & 211 & 58293$^a$ & >100000 & >100000 \\[0.05cm]
-horst-5  & 20 & 15 & 15 & 8 & 259 & 106 & 150 & 134 & 192 & 214 & 302 & 7$^a$ & >100000 & >100000 \\[0.05cm]
-horst-6  & 22 & 59 & 77 & 10 & 284 & 90 & 172 & 110 & 192 & 133 & 227 & 11$^a$ & 739$^a$ & >100000 \\[0.05cm]
-horst-7  & 10 & 15 & 13 & 10 & 220 & 188 & 201 & 380 & 403 & 919 & 957 & 7$^a$ & 71$^a$ & >100000 \\[0.05cm]
+horst-4  & 10 & 25 & 24 & 8 & 260 & 90 & 179 & 114 & 194 & 129 & 211 & 58293$^a$ & $>$100000 & $>$100000 \\[0.05cm]
+horst-5  & 20 & 15 & 15 & 8 & 259 & 106 & 150 & 134 & 192 & 214 & 302 & 7$^a$ & $>$100000 & $>$100000 \\[0.05cm]
+horst-6  & 22 & 59 & 77 & 10 & 284 & 90 & 172 & 110 & 192 & 133 & 227 & 11$^a$ & 739$^a$ & $>$100000 \\[0.05cm]
+horst-7  & 10 & 15 & 13 & 10 & 220 & 188 & 201 & 380 & 403 & 919 & 957 & 7$^a$ & 71$^a$ & $>$100000 \\[0.05cm]
 hs021  & 24 & 23 & 23 & 189 & 133 & 110 & 110 & 189 & 192 & 392 & 405 & 97 & 97 & 97 \\[0.05cm]
-hs024  & 24 & 15 & 36 & 3 & 141 & 101 & 153 & 118 & 172 & 138 & 195 & 19$^a$ & 57$^a$ & >100000 \\[0.05cm]
-hs035  & 37 & 41 & 35 & 630 & 721 & 266 & 311 & 316 & 369 & 327 & 373 & >100000 & >100000 & >100000 \\[0.05cm]
-hs036  & 105 & 20 & 103 & 8 & 314 & 179 & 179 & 396 & 401 & 561 & 574 & 25$^a$ & 49$^a$ & >100000 \\[0.05cm]
-hs037  & 72 & 63 & 258 & 186 & 9129 & 127 & 131 & 160 & 167 & 201 & 574 & 7$^a$ & 7$^a$ & >100000 \\[0.05cm]
-hs038  & 225 & 1029 & 389 & 3379 & >100000 & 53662 & 54445 & 58576 & 59821 & 65677 & 67660 & 7401 & 5885 & 6511 \\[0.05cm]
-hs044  & 199 & 35 & 51 & 20 & 440 & 148$^{b(9)}$ & 218$^{b(9)}$ & 186$^{b(9)}$ & 281$^{b(9)}$ & 201$^{b(9)}$ & 299$^{b(9)}$ & 90283 & >100000 & >100000 \\[0.05cm]
-hs076  & 56 & 37 & 44 & 548 & 4794 & 132 & 198 & 203 & 286 & 275 & 341 & 19135 & >100000 & >100000 \\[0.05cm]
+hs024  & 24 & 15 & 36 & 3 & 141 & 101 & 153 & 118 & 172 & 138 & 195 & 19$^a$ & 57$^a$ & $>$100000 \\[0.05cm]
+hs035  & 37 & 41 & 35 & 630 & 721 & 266 & 311 & 316 & 369 & 327 & 373 & $>$100000 & $>$100000 & $>$100000 \\[0.05cm]
+hs036  & 105 & 20 & 103 & 8 & 314 & 179 & 179 & 396 & 401 & 561 & 574 & 25$^a$ & 49$^a$ & $>$100000 \\[0.05cm]
+hs037  & 72 & 63 & 258 & 186 & 9129 & 127 & 131 & 160 & 167 & 201 & 574 & 7$^a$ & 7$^a$ & $>$100000 \\[0.05cm]
+hs038  & 225 & 1029 & 389 & 3379 & $>$100000 & 53662 & 54445 & 58576 & 59821 & 65677 & 67660 & 7401 & 5885 & 6511 \\[0.05cm]
+hs044  & 199 & 35 & 51 & 20 & 440 & 148$^{b(9)}$ & 218$^{b(9)}$ & 186$^{b(9)}$ & 281$^{b(9)}$ & 201$^{b(9)}$ & 299$^{b(9)}$ & 90283 & $>$100000 & $>$100000 \\[0.05cm]
+hs076  & 56 & 37 & 44 & 548 & 4794 & 132 & 198 & 203 & 286 & 275 & 341 & 19135 & $>$100000 & $>$100000 \\[0.05cm]
 s224  & 166 & 165 & 165 & 49 & 463 & 105 & 107 & 121 & 122 & 157 & 158 & 7$^a$ & 431 & 457 \\[0.05cm]
 s231  & 99 & 99 & 383 & 2137 & 655 & 542 & 1011 & 2366 & 3020 & 4116 & 4800 & 1261 & 1209 & 43341 \\[0.05cm]
-s232 & 24 & 15 & 22 & 3 & 141 & 105 & 144 & 119 & 171 & 162 & 236 & 19$^a$ & 57$^a$ & >100000 \\[0.05cm]
-s250 & 105 & 20  & 103 & 8 & 314 & 296 & 296 & 367 & 375 & 495 & 498 & 25$^a$ & 49$^a$ & >100000 \\[0.05cm]
-s251 & 72 & 63 & 258 & 186 & 9127 & 83 & 84 & 129 & 137 & 175 & 180 & 7$^a$ & 7$^a$ & >100000 \\[0.05cm]
+s232 & 24 & 15 & 22 & 3 & 141 & 105 & 144 & 119 & 171 & 162 & 236 & 19$^a$ & 57$^a$ & $>$100000 \\[0.05cm]
+s250 & 105 & 20  & 103 & 8 & 314 & 296 & 296 & 367 & 375 & 495 & 498 & 25$^a$ & 49$^a$ & $>$100000 \\[0.05cm]
+s251 & 72 & 63 & 258 & 186 & 9127 & 83 & 84 & 129 & 137 & 175 & 180 & 7$^a$ & 7$^a$ & $>$100000 \\[0.05cm]
 bunnag1  & 34 & 47 & 39 & 630 & 721 & 132 & 142 & 214 & 228 & 411 & 438 & 1529 & 1495 & 1463 \\[0.05cm]
-bunnag2  & 46 & 36 & 35 & 16 & 500 & 150 & 153 & 252 & 259 & 410 & 426 & >100000 & >100000 & >100000 \\[0.05cm]
+bunnag2  & 46 & 36 & 35 & 16 & 500 & 150 & 153 & 252 & 259 & 410 & 426 & $>$100000 & $>$100000 & $>$100000 \\[0.05cm]
 \cmidrule(lr){2-15}
-Average  & 66 & 88 & 100 & 366 & >5877 & 2590 & 2672 & 3011 & 3130 & 3637 & 3812 & >17213 & >28421 & >75113 \\[0.05cm]
+Average  & 66 & 88 & 100 & 366 & $>$5877 & 2590 & 2672 & 3011 & 3130 & 3637 & 3812 & $>$17213 & $>$28421 & $>$75113 \\[0.05cm]
 \bottomrule
 \end{tabular}
 \begin{tabular}{l}
@@ -93,17 +94,17 @@ The Table in Appendix~\ref{sec:nres} shows the raw numerical results. Note that,
 
 
 \begin{figure} %\label{fig:resmin}
-\centerline{\includegraphics[scale=0.83]{./Fig12.pdf}}
+\centerline{\includegraphics[scale=1.0]{./Fig12.pdf}}
 {\caption{Performance profiles for SHGO, TGO, DE and BH on SciPy benchmarking test suite} \label{fig:pprofile}} 
 \end{figure}
 
 \begin{figure} %\label{fig:resmin}
-\centerline{\includegraphics[scale=0.83]{./Fig13.pdf}}
+\centerline{\includegraphics[scale=1.0]{./Fig13.pdf}}
 {\caption{Performance profiles zoomed in to the range of $f.e.=[0, 1000]$ function evaluations and $[0, 0.4]$ seconds run time} \label{fig:pprofilezoom}} 
 \end{figure}
 
 \section{Invariance and optimum minimiser pool}
-The following 4 optimisation test problems were used to demonstrate the applications of \autoref{theorem:invariance_M} and to show the minimiser pool growth compared to TGO over a large number of sampling points. The results plotted in \autoref{fig:resmin} shows that SHGO performed as expected with the minimiser pool staying at the optimum cardinality to map all the local minima once the sampling is adequate as well as the shortcomings of the TGO especially in the higher dimensional test problems where the the minimiser pool tends to grow rapidly with the number sampling points $N$.
+The following 4 optimisation test problems were used to demonstrate the applications of \Cref{theorem:invariance_M} and to show the minimiser pool growth compared to TGO over a large number of sampling points. The results plotted in \Cref{fig:resmin} shows that SHGO performed as expected with the minimiser pool staying at the optimum cardinality to map all the local minima once the sampling is adequate as well as the shortcomings of the TGO especially in the higher dimensional test problems where the the minimiser pool tends to grow rapidly with the number sampling points $N$.
 
 The Ursem01 function for two dimensions is defined as follows \cite{Gavana2016}
 \begin{equation} \label{eq:Ursem01}
@@ -130,14 +131,14 @@ f(\bold{x})= \left(\sum_{i=1}^n x_i^2 \right)^{\sqrt{\pi}} , ~ \bold{x} \in \Ome
 \end{equation}
 
 \begin{figure} %\label{fig:resmin}
-\centerline{\includegraphics[scale=0.45]{./Fig11.pdf}}
+\centerline{\includegraphics[scale=0.6]{./Fig11.pdf}}
 {\caption{(a) The minimiser pool growth of the TGO and SHGO algorithms for the smooth objective function described in Example 3 and restated in Equation~(\ref{eq:Ursem01}) for convenience, the SHGO never increases above the optimum of $|\mathcal{M}| = 3$, for TGO 3 different values of the $k$ parameter are shown. (b) The minimiser pool growth for the six dimensional Paraboloid problem defined by Equation (\ref{eq:Paraboloid }), note that even though the problem has only one minimum, the minimiser pool for TGO set at $k = k_c$ tends to increase for increasing sampling points $N$. In general this problem is exacerbated in higher dimensions while SHGO stays at the optimum $|\mathcal{M}| = 1$. The TGO minimiser pool for $k = 3$ and $k = 4$ are not shown here because the minimiser pool grows too rapidly. (c) The minimiser pool growth for the two dimensional Bird problem defined by Equation~(\ref{eq:Bird}), an important observation here is that $|\mathcal{M}|$ is higher than optimum for SHGO before the sampling is adequate as defined by Equation~(\ref{theorem:invariance_M}) which happens at the after there are $N = 1722$ Sobol sequenced points after which $|\mathcal{M}|$ stays at the optimum value equal to the number of unique local minima with increasing $N$. (d) The minimiser pool growth for the six dimensional Schwefel01 problem defined by Equation (\ref{eq:Schwefel01}), here again $|\mathcal{M}|$ for TGO set at $k_c$ grows rapidly with $N$ while $|\mathcal{M}|$ for SHGO stays constant at the optimum.} \label{fig:resmin}} 
 
 \end{figure}
 
 %In the Table~\ref{tab:results} ndim = $n$ refers the the number of dimensions, nfev refers to the total number of function evaluations used to solved the problem, nlmin refers to the number of local minima found while nulmin refers to the number of local minima that are unique to a set tolerance, success refers to whether or not the algorithm successfully found the correct global minima and finally runtime is the total time the algorithm ran on an optimisation problem measured in seconds.
 
-%\autoref{sec:nres}
+%\Cref{sec:nres}
 
 
 %!! TODO: Lennard-Jones crystals \cite{Chill2014} where we have, using function evaluations as a metric, SHGO was 36.5 times faster than BH, 79.6 times faster than DE and 2.6 times faster than our own in-house version of TGO in solving $n = 6$, simulate for the $n=3 \times 60$ using the symmetry constraints.

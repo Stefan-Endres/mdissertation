@@ -1,6 +1,6 @@
 \appendix
-\section{Numerical results for selected optimisation problems} \label{sec:nres}
-\autoref{tab:results} show respectively: the name of the optimisation test problem (Problem), the name of the algorithm (Alg), number of dimensions ($n$) of the optimisation problem, the number of function evaluations required by the algorithm to solve the problem (nfev), the number of minimisers generated as starting points by the algorithm (nlmin), the number of unique local minima mapped by the algorithm (nulmin), whether successful convergence to the global minima was achieved (Success), the CPU run time measured in seconds (Runtime) and finallythe number of function evaluations per unique local minima (nfev/nulmin). For all these test problems the algorithm was terminated if the algorithm ran for longer than 10 minutes.
+\chapter{Numerical results for selected optimisation problems} \label{sec:nres}
+\Cref{tab:results} shows respectively: the name of the optimisation test problem (Problem), the name of the algorithm (Alg), number of dimensions ($n$) of the optimisation problem, the number of function evaluations required by the algorithm to solve the problem (nfev), the number of minimisers generated as starting points by the algorithm (nlmin), the number of unique local minima mapped by the algorithm (nulmin), whether successful convergence to the global minima was achieved (Success) and finally the  the CPU run time measured in seconds (Runtime). For all these test problems the algorithm was terminated if the algorithm ran for longer than 10 minutes.
 
 The optimisation runs were done on a computer with the following specifications:
 \begin{itemize}
@@ -14,7 +14,11 @@ The optimisation runs were done on a computer with the following specifications:
 
 %\autoref{tab:res}
 \begin{longtable}{llrrrrlr}
-\caption{Comparison of the performance of SHGO, TGO, BH and DE over a wide selection of optimisation test problems. The columns are the name of the optimisation test problem, the algorithm (Alg) used, the number of dimensions ($n$) of the optimisation problem, the number of function evaluations (nfev), the number of minimisers generated (nlmin), the number of unique local minima (nulmin), successful convergence to the global minima and the total CPU run time (runtime). \label{tab:results}}\\    %%%%<===
+%\caption{Comparison of the performance of SHGO, TGO, BH and DE over a wide selection of optimisation test problems. The columns are the name of the optimisation test problem, the algorithm (Alg) used, the number of dimensions ($n$) of the optimisation problem, the number of function evaluations (nfev), the number of minimisers generated (nlmin), the number of unique local minima (nulmin), successful convergence to the global minima and the total CPU run time (runtime). \label{tab:results}}\\    %%%%<===
+\caption{Comparison of the performance of SHGO, TGO, BH and DE over a wide selection of optimisation test problems. \label{tab:results}}\\    %%%%<===
+\endfirsthead
+\caption[]{Comparison of the performance of SHGO, TGO, BH and DE over a wide selection of optimisation test problems. \label{tab:results}}\\    %%%%<===
+\endhead
 \toprule
          &    &  ndim &     nfev &  nlmin &  nulmin & success &     runtime \\
 Problem & Alg &       &          &        &         &         &             \\
@@ -27,6 +31,10 @@ Problem & Alg &       &          &        &         &         &             \\
 
 \bottomrule
 \endlastfoot
+\toprule
+         &    &  ndim &     nfev &  nlmin &  nulmin & success &     runtime \\
+Problem & Alg &       &          &        &         &         &             \\
+\midrule
 All & bh &     0 &  1358408 &      0 &       0 &     NaN &         NaN \\
          & de &     0 &   934804 &      0 &       0 &     NaN &         NaN \\
          & shgo-simplicial &     0 &    72240 &    238 &     238 &     NaN &         NaN \\
@@ -239,7 +247,8 @@ DeckkersAarts & bh &     2 &     2844 &      0 &       0 &    True &    0.026594
          & shgo-simplicial &     2 &       86 &      1 &       1 &    True &    0.003099 \\
          & shgo-sobol &     2 &       99 &      2 &       2 &    True &    0.002026 \\
          & tgo &     2 &      167 &      2 &       2 &    True &    0.002544 \\
-DeflectedCorrugatedSpring & bh &     2 &     2055 &      0 &       0 &    True &    0.043273 \\
+%DeflectedCorrugatedSpring & bh &     2 &     2055 &      0 &       0 &    True &    0.043273 \\
+DefCorrSpring & bh &     2 &     2055 &      0 &       0 &    True &    0.043273 \\
          & de &     2 &      892 &      0 &       0 &    True &    0.032436 \\
          & shgo-simplicial &     2 &        9 &      1 &       1 &    True &    0.000695 \\
          & shgo-sobol &     2 &        7 &      1 &       1 &    True &    0.000676 \\
@@ -274,7 +283,8 @@ EggHolder & bh &     2 &     1983 &      0 &       0 &   False &    0.046486 \\
          & shgo-simplicial &     2 &      616 &      2 &       2 &    True &    0.042003 \\
          & shgo-sobol &     2 &      233 &      4 &       4 &    True &    0.007344 \\
          & tgo &     2 &      293 &      5 &       5 &    True &    0.008198 \\
-ElAttarVidyasagarDutta & bh &     2 &     3219 &      0 &       0 &    True &    0.031350 \\
+%ElAttarVidyasagarDutta & bh &     2 &     3219 &      0 &       0 &    True &    0.031350 \\
+EAVD & bh &     2 &     3219 &      0 &       0 &    True &    0.031350 \\
          & de &     2 &     1301 &      0 &       0 &    True &    0.034577 \\
          & shgo-simplicial &     2 &    33094 &      2 &       2 &    True &    2.799852 \\
          & shgo-sobol &     2 &      277 &      3 &       3 &    True &    0.005578 \\
@@ -834,7 +844,8 @@ UrsemWaves & bh &     2 &      420 &      0 &       0 &   False &    0.014496 \\
          & shgo-simplicial &     2 &       13 &      2 &       2 &    True &    0.000739 \\
          & shgo-sobol &     2 &       19 &      1 &       1 &    True &    0.000854 \\
          & tgo &     2 &       19 &      1 &       1 &    True &    0.000707 \\
-VenterSobiezcczanskiSobieski & bh &     2 &     2448 &      0 &       0 &   False &    0.034364 \\
+%VenterSobiezcczanskiSobieski & bh &     2 &     2448 &      0 &       0 &   False &    0.034364 \\
+VSS & bh &     2 &     2448 &      0 &       0 &   False &    0.034364 \\
          & de &     2 &      655 &      0 &       0 &    True &    0.019093 \\
          & shgo-simplicial &     2 &        9 &      1 &       1 &    True &    0.000497 \\
          & shgo-sobol &     2 &        7 &      1 &       1 &    True &    0.000617 \\

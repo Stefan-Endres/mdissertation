@@ -1,6 +1,6 @@
 \section{Sampling generation}
 %\subsection{Sobol sampling}
-Using the Sobol sequence sampling point generation proceeds in a similar way as that described in \autoref{sec:tgo1}. However, rather than only generating an arbitrary number of pre-defined sampling points we will also consider heuristic methods starting with the minimum amount of sampling points required to triangulate an $n$ dimensional space. For example start with the minimum amount of sampling points to construct an $n-$dimensional simplex and continue sampling while continuously calculating the $\bold{H}_1 (\mathcal{H})$ homology groups of the complex. Using the definitions described in this section the sampling is continued until the growth rate of the approximated homology groups slows appreciably. %This latter method is described in !!.
+Using the Sobol sequence sampling point generation proceeds in a similar way as that described in \Cref{sec:tgo1}. However, rather than only generating an arbitrary number of pre-defined sampling points we will also consider heuristic methods starting with the minimum amount of sampling points required to triangulate an $n$ dimensional space. For example start with the minimum amount of sampling points to construct an $n-$dimensional simplex and continue sampling while continuously calculating the $\bold{H}_1 (\mathcal{H})$ homology groups of the complex. Using the definitions described in this section the sampling is continued until the growth rate of the approximated homology groups slows appreciably. %This latter method is described in !!.
 
 %\subsection{Minimum triangulation sampling}
 %In this publication we also consider another uniform sampling which is generated from an algorithm using the symmetry group $S_n$ of the set $\{1, 2, 3, \dots, $n$\}$. This method is described in more detail Section \ref{sec:triangle}, but first we describe how the triangulation is used to construct the directed simplicial complex $\mathcal{H}$.
@@ -17,7 +17,7 @@ In this publication the Sobol sequenced sampling points are triangulated using D
 There are several possibilities for mitigating this problem. Since the Sobol sequence is deterministic the triangulations can be calculated and stored in a database. For SHGO another possibility whereby the convex hull does not need to be solved by using symmetry generated triangulation was developed. Building on the initial $n$-cube triangulation developed by \citeauthor{paulavivcius2014simplicial} \cite{paulavivcius2014simplicial, Zilinskas2016} and using the symmetry groups $S_n,$ $n = \{1, 2, 3, \dots, $n$\}$ to generate an initial triangulation. Subsequent uniform sampling that ensures a symmetrical triangulation is generated in the next generation of simplices. This is done by an ordering of edges and using the cycle $(123 \dots n-1)$ to ensure that we always split every simplex by a hyperplane that goes through a child vertex on the longest edge of simplex and every other vertex in the parent simplex that does not have incidence on the edge. Figure \ref{fig:triangles} demonstrates the symmetry of this sampling in $n=2$ where the longest edge in the initial triangulation was sampled. Here an iteration is defined as any generation of sub-triangulations that provides a triangulation symmetrical to the initial triangulation. An implementation of this sampling sequence is available at \cite{SHGOpy}.
 
 \begin{figure}
-\centerline{\includegraphics[scale=0.8]{./Fig10.pdf}}
+\centerline{\includegraphics[scale=1.0]{./Fig10.pdf}}
 {\caption{Triangulation of a unit hypercube shown in 2 dimensions for 4 iterations  \label{fig:triangles} }}
 \end{figure}
 
@@ -110,7 +110,7 @@ Open source python implementations of both of these algorithms are available and
 \State Calculate $\mathcal{H}$ from $h: \mathcal{P}\rightarrow \mathcal{H}$
 \EndProcedure
 \Procedure{Construct $\mathcal{M}$}{}
-\State Find $\mathcal{M}$ from \autoref{def:h4}.
+\State Find $\mathcal{M}$ from \Cref{def:h4}.
 \EndProcedure
 \Procedure{Local minimisation}{}
 \State Calculate the approximate local minima of $f$ using a local minimisation routine with the elements of $\mathcal{M}$ as starting points.
@@ -155,7 +155,7 @@ Open source python implementations of both of these algorithms are available and
 \State Calculate $\bold{H}_1 (\mathcal{H})$
 \EndProcedure
 \Procedure{Construct $\mathcal{M}$}{}
-\State Find $\mathcal{M}$ from \autoref{def:h4}.
+\State Find $\mathcal{M}$ from \Cref{def:h4}.
 \EndProcedure
 \Procedure{Local minimisation}{}
 \State Calculate the approximate local minima of $f$ using a local minimisation routine with the elements of $\mathcal{M} \setminus \mathcal{M}^E$ as starting points. 
