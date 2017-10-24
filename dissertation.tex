@@ -77,8 +77,9 @@ pdftex]{report} % make report->book for two sided final publishing.
 %\section{Conclusion}
 \include{conc}
 
-% Appendix Speed up compilato
-\subfile{./raw.tex}
+% Appendix 
+%\subfile{./raw.tex}
+\include{raw}
 
 %\include{introduction}
 %\include{literature}
@@ -91,8 +92,8 @@ pdftex]{report} % make report->book for two sided final publishing.
 %\include{results}
 %\include{conclusion}
 
-\bibliography{library}
-\bibliographystyle{abbrvnat}
+
+
 
 \appendix
 %\include{programlistings}
@@ -103,6 +104,10 @@ pdftex]{report} % make report->book for two sided final publishing.
 
 %\bibliographystyle{cheming}
 %\bibliographystyle{apalike}
+%\bibliographystyle{abbrvnat}
+\bibliography{library}
+\bibliographystyle{cheming}
+\printindex
 
 %\printindex
 
