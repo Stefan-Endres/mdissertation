@@ -1,7 +1,7 @@
-\section{Axially directed topograph}  \label{sec:atgo}
-Based on the observations from \autoref{sec:motivation} we develop an algorithm that, for a given sampling set, always uses the optimal number of starting minimisers as defined for one dimensional objective functions without requiring \it{a-priori} \normalfont specification of the $k$ parameter. Here a new graph structure is proposed and attempts are made to directly extend the idea to higher dimensions by connecting every vertex to the nearest vertex in every cartesian axis direction. In Theorem \ref{theorem:iff1} we show that the one dimensional properties of this algorithm does not extend to higher dimensions which finally leads us to the built up complexes in \autoref{sec:shgo}. The main conclusion of this section is that simpler graph structures cannot be used to find locally convex sub-domains of a function in the same way that was accomplished in \autoref{sec:motivation}.
+\chapter{Axially directed topograph}  \label{sec:atgo}
+Based on the observations from \Cref{sec:motivation} we develop an algorithm that, for a given sampling set, always uses the optimal number of starting minimisers as defined for one dimensional objective functions without requiring \it{a-priori} \normalfont specification of the $k$ parameter. Here a new graph structure is proposed and attempts are made to directly extend the idea to higher dimensions by connecting every vertex to the nearest vertex in every cartesian axis direction. In Theorem \ref{theorem:iff1} we show that the one dimensional properties of this algorithm does not extend to higher dimensions which finally leads us to the built up complexes in \Cref{sec:shgo}. The main conclusion of this section is that simpler graph structures cannot be used to find locally convex sub-domains of a function in the same way that was accomplished in \Cref{sec:motivation}.
 
-The algorithm proceeds in the same way as TGO described in \autoref{sec:TGO} except for step 2 where a new structure described in Section 4.1 replaces the topograph. 
+The algorithm proceeds in the same way as TGO described in \Cref{sec:TGO} except for step 2 where a new structure described in Section 4.1 replaces the topograph. 
 
 
 \subsection{Axially directed topograph}
@@ -73,10 +73,10 @@ $\mathcal{M}_{ub}=  \left\{ \bold{p}^i~|~\forall j \left(f_j^{+i} < 0 \right), i
 That is, we simply check the finite difference between sampling points in every cartesian direction. In addition we check if the sampling points on the boundaries are minimisers.
 
 \begin{theorem} \label{theorem:iff1}
-The minimiser pool $\mathcal{M}$ from \autoref{def:carpool} always produces a set that is either smaller than or equal to the optimum minimiser pool as defined by \autoref{def:optpool} iff $j = 1$.
+The minimiser pool $\mathcal{M}$ from \Cref{def:carpool} always produces a set that is either smaller than or equal to the optimum minimiser pool as defined by \Cref{def:optpool} iff $j = 1$.
 \end{theorem}
 \begin{proof}
-The proof for $j = 1$ follows the same argument from \autoref{sec:motivation}. By Definition \ref{def:indexset}, \ref{def:atgo2} and \ref{def:atgo3} we have the ordering constructed as $\mathcal{P}$ and $\mathcal{F}_1$. If a given point $\bold{p}^i$ is a minimiser with $f_1^{+i} > 0$ and $f_1^{-i} > 0$, then we have by Definition \ref{def:atgo4} $f^i < f^{i - 1}$ and $f^i < f^{i + 1}$, conversely if a given point $\bold{p}^i$ is not a minimiser then either $f_1^{+i} < 0$ or $f_1^{-i} > 0$ so that regardless of the sampling method used and the Euclidean distance between points a minimiser will never be generated for any point that has $\left((f^i > f^{i - 1}) \land (f^i > f^{i + 1} )\right) \lor \left(( f^i < f^{i - 1}) \land (f^i < f^{i + 1} ) \right)$.
+The proof for $j = 1$ follows the same argument from \Cref{sec:motivation}. By Definition \ref{def:indexset}, \ref{def:atgo2} and \ref{def:atgo3} we have the ordering constructed as $\mathcal{P}$ and $\mathcal{F}_1$. If a given point $\bold{p}^i$ is a minimiser with $f_1^{+i} > 0$ and $f_1^{-i} > 0$, then we have by Definition \ref{def:atgo4} $f^i < f^{i - 1}$ and $f^i < f^{i + 1}$, conversely if a given point $\bold{p}^i$ is not a minimiser then either $f_1^{+i} < 0$ or $f_1^{-i} > 0$ so that regardless of the sampling method used and the Euclidean distance between points a minimiser will never be generated for any point that has $\left((f^i > f^{i - 1}) \land (f^i > f^{i + 1} )\right) \lor \left(( f^i < f^{i - 1}) \land (f^i < f^{i + 1} ) \right)$.
 
 If $j > 1$ we have no such guarantee for a higher dimensional locally convex domain. As a counter example consider the set of points $$\mathcal{P} = \left( (0,~0), (0.25,~0.25), (0.75,~0.125), (0.125,~0.75)\right)$$ on the same function as above, the minimiser set produced is $\mathcal{M} = \{(0,~0),~(0.25,~0.25)\}$ which is clearly larger than optimal and will produce the same local minimum. % TODO: Show calculations?
 \end{proof}
@@ -111,7 +111,7 @@ Algorithm \ref{alg:atgo} provides a high-level overview of the ATGO algorithm. A
 \State Find $\mathcal{F}$ from the objective function $f: \mathcal{P} \rightarrow \mathcal{F}$
 \EndProcedure
 \Procedure{Construct $\mathcal{M}$}{}
-%\State Calculate $\mathcal{F}^+_j$, $\mathcal{F}^-_j$ and $\mathcal{M}$ using Definitions \autoref{def:indexset} through \autoref{def:carpool}.
+%\State Calculate $\mathcal{F}^+_j$, $\mathcal{F}^-_j$ and $\mathcal{M}$ using Definitions \Cref{def:indexset} through \Cref{def:carpool}.
 \State Calculate $\mathcal{M}$ from the sets $\mathcal{P}$ and $\mathcal{F}$ using Definitions \ref{def:atgo2} through \ref{def:carpool}.
 \EndProcedure
 \Procedure{Local minimisation}{}
