@@ -1,16 +1,16 @@
 \chapter{Experimental Results} \label{sec:results}
 \section{Comparison to with linear constraints}
 
-In this section we provide experimental comparisons on 22 linearly constrained problems comparing the SHGO, TGO, Lc-DISIMPL \cite{Paul2016}, PSwarm \cite{Vaz2008} and DIRECT-L1 \cite{finkel2003direct} algorithms. Note that the data for the Lc-DISIMPL, PSwarm and DIRECT-L1 algorithms was taken from \cite{Paul2016}. The same error of $pe = 0.01\%$ used by \cite{Paul2016} was also used in this publication. To provide a fair comparison of TGO to SHGO and the other solvers the TGO algorithm was modified to stop sampling when it produced a minimiser that lead to the global minimum of the problem. Table \ref{tab:lc_results} shows the results. Here f.e. is the total number of objective function evaluations required to solve the function and p.f.e. is the total number of penalty function evaluations. \cite{Paul2016} used DIRECT-L1 with the 3 different penalty parameters (p.p.) shown in the table. The PSwarm solver was run 10 times for each test problem. 
+In this section we provide experimental comparisons on 22 linearly constrained problems comparing the SHGO, TGO, Lc-DISIMPL \citep{Paul2016}, PSwarm \citep{Vaz2008} and DIRECT-L1 \citep{finkel2003direct} algorithms. Note that the data for the Lc-DISIMPL, PSwarm and DIRECT-L1 algorithms was taken from \citet{Paul2016}. The same error of $pe = 0.01\%$ used by \citet{Paul2016} was also used in this publication. To provide a fair comparison of TGO to SHGO and the other solvers the TGO algorithm was modified to stop sampling when it produced a minimiser that lead to the global minimum of the problem. Table \ref{tab:lc_results} shows the results. Here f.e. is the total number of objective function evaluations required to solve the function and p.f.e. is the total number of penalty function evaluations. \citet{Paul2016} used DIRECT-L1 with the 3 different penalty parameters (p.p.) shown in the table. The PSwarm solver was run 10 times for each test problem. 
 
-The SHGO-Simpl, SHGO-Sobol and TGO (using Henderson's formula for $k_c$) algorithms were able to solve all 22 problems. The lowest average number of function evaluations was achieved by SHGO-Simpl followed by SHGO-Sobol and TGO. It can be observed that Lc-DISIMPL-v achieved a better performance than any other algorithm for the horst-1 to horst-6, hs024, hs035, s232, s250 and bunnag2 problems. As noted in \cite{Paul2016} the initial triangulation of Lc-DISIMPL-v evaluates the function values at the vertices of the simplices and therefore for some of the tested problems the solutions were found after initial triangulation on one of the vertices of the feasible region. It is also possible to initiate SHGO with such an initial triangulation by definition the first few vertices in $\mathcal{X}$ as the intercepts of the linear constraints in a similar way to \cite{Paul2016} and then continuing to add sampling points as normal.
+The SHGO-Simpl, SHGO-Sobol and TGO (using Henderson's formula for $k_c$) algorithms were able to solve all 22 problems. The lowest average number of function evaluations was achieved by SHGO-Simpl followed by SHGO-Sobol and TGO. It can be observed that Lc-DISIMPL-v achieved a better performance than any other algorithm for the horst-1 to horst-6, hs024, hs035, s232, s250 and bunnag2 problems. As noted in \citet{Paul2016} the initial triangulation of Lc-DISIMPL-v evaluates the function values at the vertices of the simplices and therefore for some of the tested problems the solutions were found after initial triangulation on one of the vertices of the feasible region. It is also possible to initiate SHGO with such an initial triangulation by definition the first few vertices in $\mathcal{X}$ as the intercepts of the linear constraints in a similar way to \citet{Paul2016} and then continuing to add sampling points as normal.
 
 Table \ref{tb:lc} provides additional information for SHGO and TGO including the total number of function evaluations required by the algorithm to solve the problem (f.e.), the number of minimisers generated as starting points by the algorithm (nlmin), the number of unique local minima mapped by the algorithm (nulmin) and the total processing time (runtime) in seconds.
 
 It can be seen that neither of the SHGO algorithms produced more starting points leading to the same local minima as predicted by the theory for adequately sampled function surfaces. On the contrary TGO produced more than one starting point in the same locally convex domain on some test problems which lead to extra function evaluations, producing a poorer overall performance. While SHGO-Simpl had the lowest number of average function evaluations, a higher processing run time is observed compared to the other 2 algorithms. This can be explained by the fact the triangulation code for the sampling has, not yet been optimised, which consumed most of the run time. SHGO-Sobol and TGO use the same sampling generation code and it is observed that SHGO-Sobol has a lower processing run time as expected.
 
 
-The source code used to produce these results including the scripts that run the test benchmarking suite is publically available at \cite{SHGOpy}. The specifications of the system used to run the test problems can be found in Appendix~\ref{sec:nres}.
+The source code used to produce these results including the scripts that run the test benchmarking suite is publically available at \citet{SHGOpy}. The specifications of the system used to run the test problems can be found in Appendix~\ref{sec:nres}.
 
 
 
@@ -18,7 +18,7 @@ The source code used to produce these results including the scripts that run the
 \begin{landscape}
 % \hspace*{-3cm} 
 \begin{table}[htbp]
-\caption{Function evaluation comparisons for test problems with linear constraints. }%The results for the Lc-DSIMPL, PSwarm and DIRECT-L1 algorithms were taken from \cite{Paul2016}}
+\caption{Function evaluation comparisons for test problems with linear constraints. }%The results for the Lc-DSIMPL, PSwarm and DIRECT-L1 algorithms were taken from \citet{Paul2016}}
 %{\tablinesep=2ex\tabcolsep=10pt
 \begin{tabular}{lrrrrrrrrrrrrrr}
 \toprule
@@ -83,7 +83,7 @@ Average & shgo-simplicial      &    65 &      1 &       1  &  0.012852 \\
 \end{table}
 
 \section{Function evaluations and comparison to other open source global optimisation algorithms}
-In this section we present numerical experiments comparing the SHGO and TGO algorithms with the SciPy implementations \cite{scipy} of basinhopping (BH) \cite{li1987monte, wales2003energy, wales1997global, wales1999global} and differential evolution (DE) \cite{Storn1997}. These algorithms were chosen both because the open source versions are readily available in the SciPy project and because BH is commonly used in energy surface optimisations \cite{Wales2015} from which the motivation for developing SHGO grew. DE has also been applied in optimising Gibbs energy surfaces for phase equilibria calculations \cite{Zhang2011}. The optimisation problems in Appendix~\ref{sec:nres} were selected from the SciPy global optimisation benchmarking test suite \citep{Adorio2005, Gavana2016, Jamil2013, Mishra2007, Mishra2006, NIST2016}. The test suite contains multi-modal problems with box constraints, they are described in detail in \cite{Gavana2016}. We again used the stopping criteria $pe = 0.01\%$ for SHGO and TGO. For the stochastic algorithms (BH and DE) the starting points provided by the test suite were used. For every test the algorithm was terminated if the global minimum was not found after 10 minutes of processing time and the test was flagged as a fail. For comparisons we used normalised performance profiles \cite{Dolan2002} using function evaluations and processing time as performance criteria. In total 180 test problems were used.
+In this section we present numerical experiments comparing the SHGO and TGO algorithms with the SciPy implementations \citep{scipy} of basinhopping (BH) \citep{li1987monte, wales2003energy, wales1997global, wales1999global} and differential evolution (DE) \citep{Storn1997}. These algorithms were chosen both because the open source versions are readily available in the SciPy project and because BH is commonly used in energy surface optimisations \citep{Wales2015} from which the motivation for developing SHGO grew. DE has also been applied in optimising Gibbs energy surfaces for phase equilibria calculations \citep{Zhang2011}. The optimisation problems in Appendix~\ref{sec:nres} were selected from the SciPy global optimisation benchmarking test suite \citep{Adorio2005, Gavana2016, Jamil2013, Mishra2007, Mishra2006, NIST2016}. The test suite contains multi-modal problems with box constraints, they are described in detail in \citet{Gavana2016}. We again used the stopping criteria $pe = 0.01\%$ for SHGO and TGO. For the stochastic algorithms (BH and DE) the starting points provided by the test suite were used. For every test the algorithm was terminated if the global minimum was not found after 10 minutes of processing time and the test was flagged as a fail. For comparisons we used normalised performance profiles \citep{Dolan2002} using function evaluations and processing time as performance criteria. In total 180 test problems were used.
 
 From \Cref{fig:pprofile} it can be observed that for this problem set SHGO-Sobol was the best performing algorithm, followed closely by TGO and SHGO-Simpl. \Cref{fig:pprofilezoom} provides a clearer comparison between these three algorithms. While the performance of all 3 algorithms are comparable, SHGO-Sobol tends to outperform TGO, solving more problems for a given number of function evaluations. This is expected since, for the same sampling point sequence, TGO produced more than one starting point in the same locally convex domain on some test problems which leads to extra function evaluations. In total TGO produced 403 minima of which only 393 minima were unique while all of the 225 minima produced by SHGO-Sobol were unique. SHGO-Simpl produced 238 of which all 238 were unique. It is apparent that SHGO-Simpl performed worse compared to the other sampling methods despite a better performance on the test problem set with linear constraints. There are two reasons for this result. First of all, the uniformity properties of the Sobol sequence hold only for hypercubes. Therefore, it is lost for geometries defined by the search spaces inside linear constraints. Secondly the current code for the triangulation of the simplex cannot add only one sampling point per iteration, but must split all the simplices until the symmetry of the entire complex is restored. This leads to a much higher number of function evaluations during the sampling step of the algorithm.
 
@@ -107,17 +107,17 @@ From \Cref{fig:pprofile} it can be observed that for this problem set SHGO-Sobol
 \section{Invariance and optimum minimiser pool}
 The following 4 optimisation test problems were used to demonstrate the applications of \Cref{theorem:invariance_M} and to show the minimiser pool growth compared to TGO over a large number of sampling points. The results plotted in \Cref{fig:resmin} shows that SHGO performed as expected with the minimiser pool staying at the optimum cardinality to map all the local minima once the sampling is adequate as well as the shortcomings of the TGO especially in the higher dimensional test problems where the the minimiser pool tends to grow rapidly with the number sampling points $N$.
 
-The Ursem01 function for two dimensions is defined as follows \cite{Gavana2016}
+The Ursem01 function for two dimensions is defined as follows \citep{Gavana2016}
 \begin{equation} \label{eq:Ursem01}
 f(\bold{x}) =  \displaystyle - \sin{\left(2 x_1  - 0.5 \pi \right) - 3 \cos{\left(x_2\right)}} - 0.5 x_1 , ~ \bold{x} \in \Omega =  [0, 9] \times [-2, 2] 
 \end{equation}
 
-The paraboloid function for six dimensions is defined as follows %\cite{Gavana2016}
+The paraboloid function for six dimensions is defined as follows %\citep{Gavana2016}
 \begin{equation} \label{eq:Paraboloid }
 f(\bold{x}) =  \displaystyle \sum^6_{i=1} x_i^2, ~ \bold{x} \in \Omega =  [-10, 10]^6 
 \end{equation}
 
-The Bird function for two dimensions is defined as follows \cite{Gavana2016}
+The Bird function for two dimensions is defined as follows \citep{Gavana2016}
 \begin{align} \label{eq:Bird} \nonumber
 f(\bold{x}) =& \left(x_1 - x_2\right)^{2} + e^{\left[1 -
          \sin\left(x_1\right) \right]^{2}} \cos\left(x_2\right) + e^{\left[1 -
@@ -126,7 +126,7 @@ f(\bold{x}) =& \left(x_1 - x_2\right)^{2} + e^{\left[1 -
 \end{align}
 
 
-The Schwefel01 function for six dimensions is defined as follows \cite{Gavana2016}
+The Schwefel01 function for six dimensions is defined as follows \citep{Gavana2016}
 \begin{equation} \label{eq:Schwefel01}
 f(\bold{x})= \left(\sum_{i=1}^n x_i^2 \right)^{\sqrt{\pi}} , ~ \bold{x} \in \Omega = [-100, 100]^6
 \end{equation}
@@ -142,6 +142,6 @@ f(\bold{x})= \left(\sum_{i=1}^n x_i^2 \right)^{\sqrt{\pi}} , ~ \bold{x} \in \Ome
 %\Cref{sec:nres}
 
 
-%!! TODO: Lennard-Jones crystals \cite{Chill2014} where we have, using function evaluations as a metric, SHGO was 36.5 times faster than BH, 79.6 times faster than DE and 2.6 times faster than our own in-house version of TGO in solving $n = 6$, simulate for the $n=3 \times 60$ using the symmetry constraints.
+%!! TODO: Lennard-Jones crystals \citep{Chill2014} where we have, using function evaluations as a metric, SHGO was 36.5 times faster than BH, 79.6 times faster than DE and 2.6 times faster than our own in-house version of TGO in solving $n = 6$, simulate for the $n=3 \times 60$ using the symmetry constraints.
 
 %!!TODO: Move to an appendix

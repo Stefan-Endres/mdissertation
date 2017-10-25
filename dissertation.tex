@@ -79,7 +79,7 @@ pdftex]{report} % make report->book for two sided final publishing.
 
 % Appendix 
 %\subfile{./raw.tex}
-\include{raw}
+
 
 %\include{introduction}
 %\include{literature}
@@ -95,7 +95,7 @@ pdftex]{report} % make report->book for two sided final publishing.
 
 
 
-\appendix
+
 %\include{programlistings}
 %\include{parametervalues}
 %\include{programmingdetails}
@@ -105,9 +105,13 @@ pdftex]{report} % make report->book for two sided final publishing.
 %\bibliographystyle{cheming}
 %\bibliographystyle{apalike}
 %\bibliographystyle{abbrvnat}
-\bibliography{library}
 \bibliographystyle{cheming}
+\bibliography{library}
 \printindex
+
+
+\appendix
+\include{raw}
 
 %\printindex
 

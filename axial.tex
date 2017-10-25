@@ -4,7 +4,7 @@ Based on the observations from \Cref{sec:motivation} we develop an algorithm tha
 The algorithm proceeds in the same way as TGO described in \Cref{sec:TGO} except for step 2 where a new structure described in Section 4.1 replaces the topograph. 
 
 
-\subsection{Axially directed topograph}
+\section{Axially directed topograph}
 Let $\mathcal{F}$ be the set of scalar outputs mapped by the objective function $f:\mathcal{P} \rightarrow \mathcal{F}$ for a given sampling set $\mathcal{P} \subseteq \Omega \subseteq \mathbb{R}^n$. The scalar elements $f_i \in \mathcal{F}$ have one-to-one correspondence with the vector elements $\bold{p}^i \in \mathcal{P}$ where the integer $i \in \{1, 2, 3, \dots, N\}$ indicates the sampling point index. The vector $\bold{p}^i$ in turn has dimensional elements $x_j^{i}$ where the integer $j \in \{1, 2, 3, \dots, n\}$ indicates the dimension of the scalar value  $\forall i (x^{i}_1,~x^{i}_2,~x^{i}_3,~\dots,~x^{i}_n) \in \bold{p}^i$. 
 
 We wish to construct a graph that is ordered along the coordinate axes, this is done by formally defining the following related partially ordered sets.
@@ -87,8 +87,8 @@ This unsatisfactory result for higher dimensions could still potentially show go
 
 %!!TODO: Can construct arrays/matrices, use boolean values to give formula for calculating M!!
 
-\subsection{Implementation}
-Algorithm \ref{alg:atgo} provides a high-level overview of the ATGO algorithm. A Python implementation of this algorithm can be found in \cite{SHGOpy}. 
+\section{Implementation}
+Algorithm \ref{alg:atgo} provides a high-level overview of the ATGO algorithm. A Python implementation of this algorithm can be found in \citet{SHGOpy}. 
 
 \begin{algorithm}
 \caption{ATGO algorithm}
@@ -126,11 +126,11 @@ Algorithm \ref{alg:atgo} provides a high-level overview of the ATGO algorithm. A
 \end{algorithm} 
 
 
-%\subsection{Applications in one dimension}\label{sec:atgo_a}
+%\section{Applications in one dimension}\label{sec:atgo_a}
 %Consider again the objective function given in Example 1.
 
 %!! NOTE: I believe including figures here would be too much, otherwise we can have a figure showing the minimiser pool growth.
 
-%\subsection{Applications in two dimensions}\label{sec:atgo_a}
+%\section{Applications in two dimensions}\label{sec:atgo_a}
 %!! NOTE:  (Show failure in example paraboloidic function, Sobol points too far on the graph are connected providing visual clues as to why it fails, we can recommend experiments with other low discrepancy sequences or regularly spaced grids). If we do this it will be at least 2+ more pages though.
 
