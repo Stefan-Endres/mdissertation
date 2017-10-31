@@ -1,5 +1,5 @@
 \chapter{Experimental Results} \label{sec:results}
-\section{Comparison to with linear constraints}
+\section{Comparison to algorithms that can solve problems with linear constraints}
 
 In this section we provide experimental comparisons on 22 linearly constrained problems comparing the SHGO, TGO, Lc-DISIMPL \citep{Paul2016}, PSwarm \citep{Vaz2008} and DIRECT-L1 \citep{finkel2003direct} algorithms. Note that the data for the Lc-DISIMPL, PSwarm and DIRECT-L1 algorithms was taken from \citet{Paul2016}. The same error of $pe = 0.01\%$ used by \citet{Paul2016} was also used in this publication. To provide a fair comparison of TGO to SHGO and the other solvers the TGO algorithm was modified to stop sampling when it produced a minimiser that lead to the global minimum of the problem. Table \ref{tab:lc_results} shows the results. Here f.e. is the total number of objective function evaluations required to solve the function and p.f.e. is the total number of penalty function evaluations. \citet{Paul2016} used DIRECT-L1 with the 3 different penalty parameters (p.p.) shown in the table. The PSwarm solver was run 10 times for each test problem. 
 

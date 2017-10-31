@@ -1,6 +1,6 @@
 \section{Sampling generation}
 %\subsection{Sobol sampling}
-Using the Sobol sequence sampling point generation proceeds in a similar way as that described in \Cref{sec:tgo1}. However, rather than only generating an arbitrary number of predefined sampling points we will also consider heuristic methods starting with the minimum amount of sampling points required to triangulate an $n$ dimensional space. For example start with the minimum amount of sampling points to construct an $n$-dimensional simplex and continue sampling while continuously calculating the $\bold{H}_1 (\mathcal{H})$ homology groups of the complex. Using the definitions described in this section the sampling is continued until the growth rate of the approximated homology groups slows appreciably. %This latter method is described in !!.
+Using the Sobol sequence sampling point generation proceeds in a similar way as that described in \Cref{sec:tgo1}. However, rather than only generating an arbitrary number of predefined sampling points we will also consider heuristic methods starting with the minimum amount of sampling points required to triangulate an $n$-dimensional space. For example start with the minimum amount of sampling points to construct an $n$-dimensional simplex and continue sampling while continuously calculating the $\bold{H}_1 (\mathcal{H})$ homology groups of the complex. Using the definitions described in this section the sampling is continued until the growth rate of the approximated homology groups slows appreciably. %This latter method is described in !!.
 
 %\subsection{Minimum triangulation sampling}
 %In this publication we also consider another uniform sampling which is generated from an algorithm using the symmetry group $S_n$ of the set $\{1, 2, 3, \dots, $n$\}$. This method is described in more detail Section \ref{sec:triangle}, but first we describe how the triangulation is used to construct the directed simplicial complex $\mathcal{H}$.
@@ -48,13 +48,13 @@ Therefore the triangulations of both connected and disconnected subspaces $\math
 
 We have shown that the total rank of the homology groups triangulated on all connected and disconnected subspaces $\mathbb{B}_i \in \Omega$ will not increase after adequate sampling. It remains to be proven that these subspaces exist within $\Omega$. We adapt the convergence proof used by \citet{Paul2014a} for subdivided simplicial complexes. 
 \begin{proposition}
-For any point $\mathbf{x} \in \Omega$ and any $\epsilon > 0$ there exists an iteration $k(\epsilon) \ge 1$ and a point $x_i^k \in \mathcal{H}^n \in \Omega$ such that $\norm{x_i^k - x} < \epsilon$.
+For any point $\mathbf{x} \in \Omega$ and any $\epsilon > 0$ there exists an iteration $k(\epsilon) \ge 1$ and a point $\mathbf{x}_i^k \in \mathcal{H}^n \in \Omega$ such that $\norm{\mathbf{x}_i^k - \mathbf{x}} < \epsilon$.
 \end{proposition}
 Sampling points $\mathbf{x}_i$ are vertices $\mathcal{H}^0$ belonging to the set of $n$-dimensional simplices $\mathcal{H}^n$. Let $\delta^k_{max}$ be the largest diameter of the largest simplex. Since the subdivision is symmetrical all simplices have the same diameter $\delta^k_{max}$ after every iteration of the complex. At every iteration the diameter will be divided through the longest edge, thus reducing the simplices' volumes. After a sufficiently large number of iterations all simplices will have the diameter smaller than $\epsilon$. Therefore the vertices of the complex will converge to any and all points inside compact subspaces $\mathbb{B}_i$ within $\Omega$. Since we have assumed that $\Omega \neq \emptyset$ this proves the existence of subspaces $\mathbb{B}_i$. 
 
 This concludes the proof of \Cref{theorem:invariance_n}
 \end{proof}
-From this proof the convergence to a global minimum within $\Omega$, if it exists, also trivially follows by noting that $\mathbb{B}_i$ is homeomorphic to a point and that \Cref{theor:stat} applies to any minimiser in $\mathbb{B}_i$. In practice \Cref{def:hnew} is implemented in \citet{SHGOpy} by using exception handling that can capture any mathematical errors in addition to converting any not float numbers outputted by an objective function to infinity objects.
+From this proof the convergence to a global minimum within $\Omega$, if it exists, also trivially follows by noting that $\mathbb{B}_i$ is homeomorphic to a point and that \Cref{theor:stat} applies to any minimiser in $\mathbb{B}_i$. In practice \Cref{def:hnew} is implemented in \citet{SHGOpy} by using exception handling that can capture any mathematical errors in addition to converting any none float numbers outputted by an objective function to infinity objects.
 
 
 \section{Theoretical comparison to the DISIMPL algorithm}
