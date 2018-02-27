@@ -1,7 +1,7 @@
 \chapter{Experimental Results} \label{sec:results}
 \section{Comparison to algorithms that can solve problems with linear constraints}
 
-In this section we provide experimental comparisons on 22 linearly constrained problems comparing the SHGO, TGO, Lc-DISIMPL \citep{Paul2016}, PSwarm \citep{Vaz2008} and DIRECT-L1 \citep{finkel2003direct} algorithms. Note that the data for the Lc-DISIMPL, PSwarm and DIRECT-L1 algorithms was taken from \citet{Paul2016}. The same error of $pe = 0.01\%$ used by \citet{Paul2016} was also used in this publication. To provide a fair comparison of TGO to SHGO and the other solvers the TGO algorithm was modified to stop sampling when it produced a minimiser that lead to the global minimum of the problem. Table \ref{tab:lc_results} shows the results. Here f.e. is the total number of objective function evaluations required to solve the function and p.f.e. is the total number of penalty function evaluations. \citet{Paul2016} used DIRECT-L1 with the 3 different penalty parameters (p.p.) shown in the table. The PSwarm solver was run 10 times for each test problem. 
+In this section we provide experimental comparisons on 22 linearly constrained problems comparing the SHGO, TGO, Lc-DISIMPL \citep{Paul2016}, PSwarm \citep{Vaz2008} and DIRECT-L1 \citep{finkel2003direct} algorithms. Note that the data for the Lc-DISIMPL, PSwarm and DIRECT-L1 algorithms was taken from \citet{Paul2016}. The same error of $pe = 0.01\%$ used by \citet{Paul2016} was also used in this publication. To provide a fair comparison of TGO to SHGO and the other solvers the TGO algorithm was modified to stop sampling when it produced a minimiser that lead to the global minimum of the problem. Table \ref{tab:lc_results} shows the results. Here f.e.\ is the total number of objective function evaluations required to solve the function and p.f.e. is the total number of penalty function evaluations. \citet{Paul2016} used DIRECT-L1 with the 3 different penalty parameters (p.p.) shown in the table. The PSwarm solver was run 10 times for each test problem. 
 
 The SHGO-Simpl, SHGO-Sobol and TGO (using Henderson's formula for $k_c$) algorithms were able to solve all 22 problems. The lowest average number of function evaluations was achieved by SHGO-Simpl followed by SHGO-Sobol and TGO. It can be observed that Lc-DISIMPL-v achieved a better performance than any other algorithm for the horst-1 to horst-6, hs024, hs035, s232, s250 and bunnag2 problems. As noted in \citet{Paul2016} the initial triangulation of Lc-DISIMPL-v evaluates the function values at the vertices of the simplices and therefore for some of the tested problems the solutions were found after initial triangulation on one of the vertices of the feasible region. It is also possible to initiate SHGO with such an initial triangulation by definition the first few vertices in $\mathcal{X}$ as the intercepts of the linear constraints in a similar way to \citet{Paul2016} and then continuing to add sampling points as normal.
 
@@ -18,7 +18,7 @@ The source code used to produce these results including the scripts that run the
 \begin{landscape}
 % \hspace*{-3cm} 
 \begin{table}[htbp]
-\caption{Function evaluation comparisons for test problems with linear constraints. }%The results for the Lc-DSIMPL, PSwarm and DIRECT-L1 algorithms were taken from \citet{Paul2016}}
+\caption{Function evaluation comparisons for test problems with linear constraints.}%The results for the Lc-DSIMPL, PSwarm and DIRECT-L1 algorithms were taken from \citet{Paul2016}}
 %{\tablinesep=2ex\tabcolsep=10pt
 \begin{tabular}{lrrrrrrrrrrrrrr}
 \toprule
@@ -26,30 +26,30 @@ The source code used to produce these results including the scripts that run the
  & \multicolumn{1}{l}{-simpl}  & \multicolumn{1}{l}{-sobol} & \multicolumn{1}{l}{}  & \multicolumn{1}{l}{-v} & \multicolumn{1}{l}{-c} & \multicolumn{1}{l}{Minimum} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{Average} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{Maximum} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{p.p. = 10} & \multicolumn{1}{l}{p.p. = 10$^2$} & \multicolumn{1}{l}{p.p.=10$^6$} \\  \cmidrule(lr){2-3} \cmidrule(lr){4-4}  \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10} \cmidrule(lr){11-12}  \cmidrule(lr){13-15}
 Problem & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{p.f.e} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{p.f.e.} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{p.f.e} & \multicolumn{1}{l}{f.e} & \multicolumn{1}{l}{f.e.} & \multicolumn{1}{l}{f.e.} \\ 
 \midrule
-horst-1  & 97 & 24 & 34 & 7 & 249 & 167 & 182 & 1329$^{b(3)}$ & 1343$^{b(3)}$ & 4100$^{b(3)}$ & 4101$^{b(3)}$ & 287$^a$ & 3689 & $>$100000 \\[0.05cm]
-horst-2  & 10 & 11 & 11 & 5 & 171 & 160 & 176 & 424 & 492 & 768 & 867 & 265$^a$ & 10829 & $>$100000 \\[0.05cm]
-horst-3  & 6 & 7 &  6 & 5 & 249 & 42 & 43 & 44 & 45 & 46 & 47 & 5$^a$ & 591 & 617 \\[0.05cm]
-horst-4  & 10 & 25 & 24 & 8 & 260 & 90 & 179 & 114 & 194 & 129 & 211 & 58293$^a$ & $>$100000 & $>$100000 \\[0.05cm]
-horst-5  & 20 & 15 & 15 & 8 & 259 & 106 & 150 & 134 & 192 & 214 & 302 & 7$^a$ & $>$100000 & $>$100000 \\[0.05cm]
-horst-6  & 22 & 59 & 77 & 10 & 284 & 90 & 172 & 110 & 192 & 133 & 227 & 11$^a$ & 739$^a$ & $>$100000 \\[0.05cm]
-horst-7  & 10 & 15 & 13 & 10 & 220 & 188 & 201 & 380 & 403 & 919 & 957 & 7$^a$ & 71$^a$ & $>$100000 \\[0.05cm]
-hs021  & 24 & 23 & 23 & 189 & 133 & 110 & 110 & 189 & 192 & 392 & 405 & 97 & 97 & 97 \\[0.05cm]
-hs024  & 24 & 15 & 36 & 3 & 141 & 101 & 153 & 118 & 172 & 138 & 195 & 19$^a$ & 57$^a$ & $>$100000 \\[0.05cm]
-hs035  & 37 & 41 & 35 & 630 & 721 & 266 & 311 & 316 & 369 & 327 & 373 & $>$100000 & $>$100000 & $>$100000 \\[0.05cm]
-hs036  & 105 & 20 & 103 & 8 & 314 & 179 & 179 & 396 & 401 & 561 & 574 & 25$^a$ & 49$^a$ & $>$100000 \\[0.05cm]
-hs037  & 72 & 63 & 258 & 186 & 9129 & 127 & 131 & 160 & 167 & 201 & 574 & 7$^a$ & 7$^a$ & $>$100000 \\[0.05cm]
-hs038  & 225 & 1029 & 389 & 3379 & $>$100000 & 53662 & 54445 & 58576 & 59821 & 65677 & 67660 & 7401 & 5885 & 6511 \\[0.05cm]
-hs044  & 199 & 35 & 51 & 20 & 440 & 148$^{b(9)}$ & 218$^{b(9)}$ & 186$^{b(9)}$ & 281$^{b(9)}$ & 201$^{b(9)}$ & 299$^{b(9)}$ & 90283 & $>$100000 & $>$100000 \\[0.05cm]
-hs076  & 56 & 37 & 44 & 548 & 4794 & 132 & 198 & 203 & 286 & 275 & 341 & 19135 & $>$100000 & $>$100000 \\[0.05cm]
-s224  & 166 & 165 & 165 & 49 & 463 & 105 & 107 & 121 & 122 & 157 & 158 & 7$^a$ & 431 & 457 \\[0.05cm]
-s231  & 99 & 99 & 383 & 2137 & 655 & 542 & 1011 & 2366 & 3020 & 4116 & 4800 & 1261 & 1209 & 43341 \\[0.05cm]
-s232 & 24 & 15 & 22 & 3 & 141 & 105 & 144 & 119 & 171 & 162 & 236 & 19$^a$ & 57$^a$ & $>$100000 \\[0.05cm]
-s250 & 105 & 20  & 103 & 8 & 314 & 296 & 296 & 367 & 375 & 495 & 498 & 25$^a$ & 49$^a$ & $>$100000 \\[0.05cm]
-s251 & 72 & 63 & 258 & 186 & 9127 & 83 & 84 & 129 & 137 & 175 & 180 & 7$^a$ & 7$^a$ & $>$100000 \\[0.05cm]
-bunnag1  & 34 & 47 & 39 & 630 & 721 & 132 & 142 & 214 & 228 & 411 & 438 & 1529 & 1495 & 1463 \\[0.05cm]
-bunnag2  & 46 & 36 & 35 & 16 & 500 & 150 & 153 & 252 & 259 & 410 & 426 & $>$100000 & $>$100000 & $>$100000 \\[0.05cm]
+horst-1  & 97 & 24 & 34 & \textbf{7} & 249 & 167 & 182 & 1329$^{b(3)}$ & 1343$^{b(3)}$ & 4100$^{b(3)}$ & 4101$^{b(3)}$ & 287$^a$ & 3689 & $>$100000 \\[0.05cm]
+horst-2  & 10 & 11 & 11 & \textbf{5} & 171 & 160 & 176 & 424 & 492 & 768 & 867 & 265$^a$ & 10829 & $>$100000 \\[0.05cm]
+horst-3  & 6 & 7 &  6 & \textbf{5} & 249 & 42 & 43 & 44 & 45 & 46 & 47 & 5$^a$ & 591 & 617 \\[0.05cm]
+horst-4  & 10 & 25 & 24 & \textbf{8} & 260 & 90 & 179 & 114 & 194 & 129 & 211 & 58293$^a$ & $>$100000 & $>$100000 \\[0.05cm]
+horst-5  & 20 & 15 & 15 & \textbf{8} & 259 & 106 & 150 & 134 & 192 & 214 & 302 & 7$^a$ & $>$100000 & $>$100000 \\[0.05cm]
+horst-6  & 22 & 59 & 77 & \textbf{10} & 284 & 90 & 172 & 110 & 192 & 133 & 227 & 11$^a$ & 739$^a$ & $>$100000 \\[0.05cm]
+horst-7  & \textbf{10} & 15 & 13 & \textbf{10} & 220 & 188 & 201 & 380 & 403 & 919 & 957 & 7$^a$ & 71$^a$ & $>$100000 \\[0.05cm]
+hs021  & 24 & \textbf{23} & \textbf{23} & 189 & 133 & 110 & 110 & 189 & 192 & 392 & 405 & 97 & 97 & 97 \\[0.05cm]
+hs024  & 24 & 15 & 36 & \textbf{3} & 141 & 101 & 153 & 118 & 172 & 138 & 195 & 19$^a$ & 57$^a$ & $>$100000 \\[0.05cm]
+hs035  & 37 & 41 & \textbf{35} & 630 & 721 & 266 & 311 & 316 & 369 & 327 & 373 & $>$100000 & $>$100000 & $>$100000 \\[0.05cm]
+hs036  & 105 & 20 & 103 & \textbf{8} & 314 & 179 & 179 & 396 & 401 & 561 & 574 & 25$^a$ & 49$^a$ & $>$100000 \\[0.05cm]
+hs037  & 72 & \textbf{63} & 258 & 186 & 9129 & 127 & 131 & 160 & 167 & 201 & 574 & 7$^a$ & 7$^a$ & $>$100000 \\[0.05cm]
+hs038  & \textbf{225} & 1029 & 389 & 3379 & $>$100000 & 53662 & 54445 & 58576 & 59821 & 65677 & 67660 & 7401 & 5885 & 6511 \\[0.05cm]
+hs044  & 199 & 35 & 51 & \textbf{20} & 440 & 148$^{b(9)}$ & 218$^{b(9)}$ & 186$^{b(9)}$ & 281$^{b(9)}$ & 201$^{b(9)}$ & 299$^{b(9)}$ & 90283 & $>$100000 & $>$100000 \\[0.05cm]
+hs076  & 56 & \textbf{37} & 44 & 548 & 4794 & 132 & 198 & 203 & 286 & 275 & 341 & 19135 & $>$100000 & $>$100000 \\[0.05cm]
+s224  & 166 & 165 & 165 & \textbf{49} & 463 & 105 & 107 & 121 & 122 & 157 & 158 & 7$^a$ & 431 & 457 \\[0.05cm]
+s231  & \textbf{99} & \textbf{99} & 383 & 2137 & 655 & 542 & 1011 & 2366 & 3020 & 4116 & 4800 & 1261 & 1209 & 43341 \\[0.05cm]
+s232 & 24 & 15 & 22 & \textbf{3} & 141 & 105 & 144 & 119 & 171 & 162 & 236 & 19$^a$ & 57$^a$ & $>$100000 \\[0.05cm]
+s250 & 105 & 20  & 103 & \textbf{8} & 314 & 296 & 296 & 367 & 375 & 495 & 498 & 25$^a$ & 49$^a$ & $>$100000 \\[0.05cm]
+s251 & 72 & \textbf{63} & 258 & 186 & 9127 & 83 & 84 & 129 & 137 & 175 & 180 & 7$^a$ & 7$^a$ & $>$100000 \\[0.05cm]
+bunnag1  & \textbf{34} & 47 & 39 & 630 & 721 & 132 & 142 & 214 & 228 & 411 & 438 & 1529 & 1495 & 1463 \\[0.05cm]
+bunnag2  & 46 & 36 & 35 & \textbf{16} & 500 & 150 & 153 & 252 & 259 & 410 & 426 & $>$100000 & $>$100000 & $>$100000 \\[0.05cm]
 \cmidrule(lr){2-15}
-Average  & 66 & 88 & 100 & 366 & $>$5877 & 2590 & 2672 & 3011 & 3130 & 3637 & 3812 & $>$17213 & $>$28421 & $>$75113 \\[0.05cm]
+Average  & \textbf{66} & 88 & 100 & 366 & $>$5877 & 2590 & 2672 & 3011 & 3130 & 3637 & 3812 & $>$17213 & $>$28421 & $>$75113 \\[0.05cm]
 \bottomrule
 \end{tabular}
 \begin{tabular}{l}

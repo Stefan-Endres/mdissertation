@@ -24,12 +24,12 @@ There are several possibilities for mitigating this problem. Since the Sobol seq
 In this publication we will use both the Sobol and the hypercube triangulation sampling sequences. Sobol provides a more direct comparison to the TGO algorithm while the second sequence is more similar to the DISIMPL-v algorithm. We will refer to the different uses of sampling sequences as SHGO-Sobol and SHGO-Simpl in the experimental results in \Cref{sec:results}.
 
 \section{Invariance and convergence of non-continuous, non-linear optimisation problems with bounded variables}
-In this section we again consider \Cref{eq:gen_op}, but now consider the case where $\mathbf{g}$ is non-linear. In addition we allow $f$ to be non-continuous and non-linear. It is still assumed that the variables $\mathbf{x}$ are bounded. Furthermore we assume that there is a feasible solution so that $\Omega \neq \emptyset$ and that there exists at least point in range of $f$ mapped within the domain $\Omega$. We will prove that if the simplicial sampling sequence \citep{SHGOpy} is used, then SHGO will retain the Invariance property of \Cref{theorem:invariance_M}. Secondly convergence of the SHGO algorithm is proved when the number of sampling points tends to infinity.
+In this section we again consider \Cref{eq:gen_op}, but now consider the case where $\mathbf{g}$ is non-linear. In addition we allow $f$ to be non-continuous (in having removable or jump discontinuities) and non-linear. It is still assumed that the variables $\mathbf{x}$ are bounded. Furthermore we assume that there is a feasible solution so that $\Omega \neq \emptyset$ and that there exists at least point in range of $f$ mapped within the domain $\Omega$. We will prove that if the simplicial sampling sequence \citep{SHGOpy} is used, then SHGO will retain the Invariance property of \Cref{theorem:invariance_M}. Secondly convergence of the SHGO algorithm is proved when the number of sampling points tends to infinity.
 
 Before proving these properties we will need to define a new construction to deal with discontinuities in $f$. From \Cref{def:h0} and \Cref{def:h0.5} it is clear that $f$ will only map a subset of feasible domain $\Omega$, therefore only points within the this domain need to be considered. A new construction replacing \Cref{def:h0.5} that considers discontinuities (such as singularities) in the hypersurface of $f$ is now defined:
 
 \begin{definition} \label{def:hnew}
-For an objective function $f$, $\mathcal{F}$ is the set of scalar outputs mapped by the objective function $f:\mathcal{P} \rightarrow \mathcal{F}$ for a given sampling set $\mathcal{P} \subseteq \Omega \subseteq \mathbb{R}^n$. If a mapping of a vertex $v_i$ does not exist, then we define the mapping as $f: v_i \rightarrow \infty$.
+For an objective function $f$, $\mathcal{F}$ is the set of scalar outputs mapped by the objective function $f:\mathcal{P} \rightarrow \mathcal{F}$ for a given sampling set $\mathcal{P} \subseteq \Omega \subseteq \mathbb{R}^n$. If a mapping of a vertex $v_i$ does not exist, then we define the mapping as $f: v_i \rightarrow \infty$.  Any such point is excluded from the set $\mathcal{M}$.
 \end{definition}
 
 Note from \Cref{def:h3} that any vertex $v$, $f(v) = \infty$ that is connected to another vertex in $\Omega$ that maps to a finite value will never be a minimiser.
@@ -44,7 +44,7 @@ We allow all $\mathbb{B}_i$ to be connected or disconnected subspaces with respe
 $$
 \operatorname{rank}\left(\bigoplus_{i\in I}\bold{H}_1(\mathcal{K}_i)\right) = \sum_{i \in I}\operatorname{rank}(\bold{H}_1(\mathcal{K}_i))
 $$
-Therefore the triangulations of both connected and disconnected subspaces $\mathbb{B}_i$ within a possibly non-compact space $\Omega$ will retain the same total rank. After adequate sampling, the rank of $\bold{H}_1(\mathcal{K}_i)$ will not increase by \Cref{theorem:invariance_M}. Any point that is not in $\Omega$ is not connected to any graph structure by \Cref{def:h0} and \Cref{def:h0.5} and therefore cannot increase the rank of any homology group $\bold{H}_1(\mathcal{K}_i)$. Finally any vertex $v_i \in \Omega$ for which $f(v_i)$ does not exist will by \Cref{def:hnew} be mapped to infinity by \Cref{def:hnew}. By \Cref{def:h4}, $v_i$ can not be a minimiser and therefore cannot increase the rank of any homology group $\bold{H}_1(\mathcal{K}_i)$.
+Therefore the triangulations of both connected and disconnected subspaces $\mathbb{B}_i$ within a possibly non-compact space $\Omega$ will retain the same total rank. After adequate sampling, the rank of $\bold{H}_1(\mathcal{K}_i)$ will not increase by \Cref{theorem:invariance_M}. Any point that is not in $\Omega$ is not connected to any graph structure by \Cref{def:h0} and \Cref{def:h0.5} and therefore cannot increase the rank of any homology group $\bold{H}_1(\mathcal{K}_i)$. Finally any vertex $v_i \in \Omega$ for which $f(v_i)$ does not exist will by \Cref{def:hnew} be mapped to infinity by \Cref{def:hnew}. By \Cref{def:h4}, $v_i$ can not be a minimiser and therefore cannot increase the rank of any homology group $\bold{H}_1(\mathcal{K}_i)$. For the reader's benefit \Cref{fig:nonlinear3} demonstrates this property geometrically.
 
 We have shown that the total rank of the homology groups triangulated on all connected and disconnected subspaces $\mathbb{B}_i \in \Omega$ will not increase after adequate sampling. It remains to be proven that these subspaces exist within $\Omega$. We adapt the convergence proof used by \citet{Paul2014a} for subdivided simplicial complexes. 
 \begin{proposition}
@@ -55,6 +55,11 @@ Sampling points $\mathbf{x}_i$ are vertices $\mathcal{H}^0$ belonging to the set
 This concludes the proof of \Cref{theorem:invariance_n}
 \end{proof}
 From this proof the convergence to a global minimum within $\Omega$, if it exists, also trivially follows by noting that $\mathbb{B}_i$ is homeomorphic to a point and that \Cref{theor:stat} applies to any minimiser in $\mathbb{B}_i$. In practice \Cref{def:hnew} is implemented in \citet{SHGOpy} by using exception handling that can capture any mathematical errors in addition to converting any none float numbers outputted by an objective function to infinity objects.
+
+\begin{figure} 
+\centerline{\includegraphics[scale=0.85]{./non_linear_3.pdf}}
+{\caption{Visual demonstration on surfaces with non-linear constraints, the shaded region is unfeasible. The vertices of the points mapped to infinity have undirected edges, therefore they do not form simplicial complexes in the integral homology. The surfaces of each disconnected simplicial complex $\mathcal{K}_i$ can be constructed from the compact version of the invariance theorem. The rank of the abelian homology groups $\bold{H}_1(\mathcal{K}_i)$ is additive over arbitrary direct sums\label{fig:nonlinear3}}}
+\end{figure}
 
 
 \section{Theoretical comparison to the DISIMPL algorithm}

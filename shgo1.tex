@@ -4,7 +4,7 @@ The SHGO method strongly relies on constructing a simplicial complex using the s
 
 It is proved that, if provided with an adequate sampling set, the construction of $\mathcal{H}$ will produce the same homology groups. This result is used to show that for the given sampling set of vertices $\mathcal{H}^0 \in \mathcal{H}$ we always extract the optimal minimiser pool similar to the one-dimensional case described in \Cref{sec:motivation}, but extended to higher dimensions. 
 
-The algorithm itself consists of four steps which will described in detail:
+The algorithm itself consists of four steps which will be described in detail:
 \begin{enumerate}
 \item Uniform sampling point generation of N vertices in the search space within the bounded and constrained subspace of $\Omega$ from which the $0-$chains of $\mathcal{H}^0$ are constructed.
 \item Construction of the directed simplicial complex $\mathcal{H}$ by triangulation of the vertices.
@@ -16,7 +16,7 @@ We will start by formally defining the construction of $\mathcal{H}$ from a give
 
 
 \section{Directed simplicial complex approximation of the objective function}
-Consider again the general objective function mapping in the continuous domain $f : \mathbb{R}^n \rightarrow \mathbb{R}$. The purpose of this section is describe a discrete mapping $h: \mathcal{P}\rightarrow \mathcal{H}$ to provide a simplicial approximation for the surface of $f$. To guide the reader the methods will be demonstrated on the simple 2-dimensional optimisation problem defined in Example 4. The use of a 2-dimensional surface allows a demonstration of the techniques while the abstractions defined are readily extended to higher dimensions. 
+Consider again the general objective function mapping in the continuous domain $f : \mathbb{R}^n \rightarrow \mathbb{R}$. The purpose of this section is to describe a discrete mapping $h: \mathcal{P}\rightarrow \mathcal{H}$ to provide a simplicial approximation for the surface of $f$. To guide the reader the methods will be demonstrated on the simple 2-dimensional optimisation problem defined in Example 4. The use of a 2-dimensional surface allows for a demonstration of the techniques while the abstractions defined are readily extended to higher dimensions. 
 
 We start by formally defining the set of vertices from which $0$-chains of the simplicial complex are built and the of edges from which the $1$-chains of $\mathcal{H}$ are built.
 
@@ -72,7 +72,7 @@ A visual demonstration of these constructions and notations is provided in the f
 {\caption{A 3-dimensional surface plot of the optimisation test function given in Example 4 $ f(\bold{x}) =  \displaystyle - \sin{\left(2 x_1  - 0.5 \pi \right) - 3 \cos{\left(x_2\right)}} - 0.5 x_1$ for the domain $\bold{x} \in \Omega = [0, 9] \times [-2.5, 2.5] $} \label{fig:ursem}}
 \end{figure}
 
-We use a set $\mathcal{P}$ of 15 sampling points from the 2-dimensional Sobol sequence. First map out the objective function values:
+We use a set $\mathcal{P}$ of $N=15$ sampling points from the 2-dimensional Sobol sequence. First map out the objective function values:
 \begin{equation} \label{eq:ursemmap}
 f:
 \begin{bmatrix} [l]
@@ -116,7 +116,7 @@ From \Cref{def:h1} we find $\mathcal{H}^0$ from $\mathcal{P}$. Next we use Delau
 
 \begin{figure} 
 \centerline{\includegraphics[scale=1.0]{./Fig7.pdf}}
-{\caption{A directed complex $\mathcal{H}$ forming a simplicial approximation for an objective function. There are three minimiser vertices $v_1$, $v_7$ and $v_{13}$ shown by the big red dots. The area shaded in grey represents the domain defined by $\textrm{st}\left( v_1 \right)$} \label{fig:alp5}}
+{\caption{A directed complex $\mathcal{H}$ with $N=15$ forming a simplicial approximation for an objective function. There are three minimiser vertices $v_1$, $v_7$ and $v_{13}$ shown by the big red dots. The area shaded in grey represents the domain defined by $\textrm{st}\left( v_1 \right)$} \label{fig:alp5}}
 \end{figure}
 
 \begin{figure} 
@@ -132,7 +132,18 @@ Given a minimiser $v_i \in \mathcal{M} \subseteq \mathcal{H}^0$ on the surface o
 \end{theorem}
 
 \begin{proof}
-Our strategy relies on finding a simplex with a Sperner labelling where each label represents a different $n + 1$ label in every vector direction of the gradient vector field $\nabla f$ of $f$ where of the $n + 1$ Cartesian directions we require only a vector pointing towards a section defined by $n + 1$ hyperplane cuts, the remainder of the proof then proceeds as usual for Brouwer's fixed point theorem \citep{Brouwer1911} found in for example \citet[p. 40]{Henle1979} utilising Sperner's lemma.
+Our strategy relies on finding a simplex with a Sperner labelling where each label represents a different $n + 1$ label in every vector direction of the gradient vector field $\nabla f$ of $f$ where of the $n + 1$ Cartesian directions we require only a vector pointing towards a section defined by $n + 1$ hyperplane cuts, the remainder of the proof then proceeds as usual for Brouwer's fixed point theorem \citep{Brouwer1911} found in for example \citet[p. 40]{Henle1979} utilising Sperner's lemma. Figure \ref{fig:spernerdemo} provides a visual example of a Sperner labelling of a 2-simplex for the reader's benefit. Figure \ref{fig:spernerfield} shows a geometrical example of how Brouwer applied this lemma on vector fields in his fixed point theorem.
+
+
+\begin{figure} 
+\centerline{\includegraphics[scale=1.0]{./Sperner2d.pdf}}
+{\caption{A Sperner labelling of a 2-simplex, every vertex of the n-simplex is labelled with a set of labels $1, 2, . . . , n + 1$. Any vertices on the boundary $(n-1)$-simplices of the n-simplex may only contain the labels of its boundary vertices  \label{fig:spernerdemo}}}
+\end{figure}
+
+\begin{figure} 
+\centerline{\includegraphics[scale=1.0]{./Sperner2d_vec.pdf}}
+{\caption{A Sperner labelling applied by assigning directions in a vector field  \label{fig:spernerfield}}}
+\end{figure}
 
 \begin{theorem} (Sperner's lemma \citep{Sperner1928}) Every Sperner labelling of a triangulation of a n-dimensional simplex contains a cell labelled with a complete set of labels:  {1,2, \dots, n+1}.
 \end{theorem}
@@ -168,9 +179,14 @@ $v_{7} = (1.15, 0.625)$ is an example of a minimiser that does not have all thre
 
 %Note that while the extreme vertices where not sampled by the Sobol sequence (except for $v_0$), the bounds can be arbitrarily connected to the complex as was done with dotted edge connecting to $v_7$ to cover the entire search space.
 
+It should be noted that in software implementations of shgo the boundaries of the star domain of a minimiser $\partial\left(\textrm{st}(v_1)\right)$ can be passed to any local optimisation routine that handles constraints constraints. Therefore, if the local minimisation routine is guaranteed to not produce an output outside the supplied bounds, then any iteration of shgo will not produce a solution outside the designated star domain for every minimiser.
+
 There have been several developments in the extension of this lemma which could prove useful in applications extending the SHGO algorithm. One of the most interesting is by \citet{DeLoera2002} where they proved the Atanassov conjecture \citep{atanassov1996sperner} that for any polytope with $N$ vertices there are $N - n$ simplices that receive a complete set of Sperner labels. \citet{Meunier2006} further extended this theorem and more recently \citet{Musin2015} extended the theorems to a large class of manifolds with or without boundary. These theorems could prove useful for extending the algorithm to make use of this information. 
 %More explicitly the Atanassov conjecture can be used to find how many stationary points exist in a domain larger than the simplices extracted from SHGO.
 More explicitly, SHGO currently uses knowledge of the objective function evaluations, but only in a Boolean sense (in the form of directed edges). The theorems by Meunier and Musin allow us to extend Sperner's lemma to a simplicial complex built in a $(n+1)$-dimensional non-euclidean space. This would allow the application of ideas from discrete differential geometry. For example the Gauss-Bonnet theorem holds for discrete simplicial surfaces \citep{Crane2013DGP}. The Gauss-Bonnet theorem provides a relation between the total Gaussian curvature and the Euler characteristic of a surface. By simple summation of the angle defect around every vertex we can determine the Euler characteristic of a continuous surface. As will be demonstrated in Section 5.4 the simplicial complex used by SHGO is homeomorphic to complexes built on other topological hypersurfaces. Therefore when using explicit coordinates of the expected homomorphism the summation can be used to compare the error with the Euler characteristic which provides a metric for how accurately the objective function surface has been sampled. In global optimisation theory a simplicial complex built in this space can be used for approximating local and global Lipschitz constants for an objective function while still retaining the ability to detect locally convex sub-domains in the search space. %When the objective function is Lipschitz smooth ! discrete differential geometry \citep{Crane2013DGP}.
+
+
+
 
 
 %%% Invariance
@@ -190,7 +206,21 @@ The remainder of this section is devoted to proving the following theorem which 
 \begin{proof}
 The proof relies on a homomorphism between the simplicial complex $\mathcal{H}$ constructed in the bounded hyperrectangle $\Omega$ and the homology (mod 2) groups of a constructed surface $\mathcal{S}$ on which we can invoke the invariance theorem.
 
-Define the $n$-torus $\mathcal{S}_0$ from the compact, bounded hyperrectangle $\Omega$ by identification of the opposite faces and all extreme vertices. Now for every strict local minimum point $\bold{p} \in \Omega$ puncture a hypersphere and after appropriate identification the resulting $n$-dimensional manifold $\mathcal{S}_g$ is a connected g sum of g tori $S := S_0\,\#\,S_1\,\#\,\cdots\,\#\,S_{g - 1} \qquad  (g\text{ times})$
+Define the $n$-torus $\mathcal{S}_0$ from the compact, bounded hyperrectangle $\Omega$ by identification of the opposite faces and all extreme vertices. Now for every strict local minimum point $\bold{p} \in \Omega$ puncture a hypersphere and after appropriate identification the resulting $n$-dimensional manifold $\mathcal{S}_g$ is a connected g sum of g tori $S := S_0\,\#\,S_1\,\#\,\cdots\,\#\,S_{g - 1} \qquad  (g\text{ times})$.
+
+For the reader's benefit Figures \ref{fig:stori} and \ref{fig:stori_sum} demonstrates the process geometrically. Figure \ref{fig:stori} shows how to puncture a hypersphere and make the usual identifications in a 2-dimensional problem.  Figure \ref{fig:stori_sum} demonstrates the construction of $\mathcal{S}_g$.
+
+
+\begin{figure} 
+\centerline{\includegraphics[scale=0.5]{./stori_complete.pdf}}
+{\caption{The process of puncturing a hypersphere at a minimiser point in a compact search space. Start by identifying a minimiser point in the $\mathcal{H}^1$~($\cong~\mathcal{K}^1$) graph. By construction, our initial complex exists on the (hyper-)surface of an $n$-dimensional torus $\mathcal{S}_0$ such that the rest of $\mathcal{K}^1$ is connected and compact. We puncture a hypersphere at the minimiser point and identify the resulting edges (or ($n-1$)-simplices in higher dimensional problems). Next we shrink (\it a topoligical (ie continuous) transformation\normalfont) the remainder of the simplicial complex to the faces and vertices of our (hyper-)plane model. Make the appropriate identifications for $\mathcal{S}_0$ and glue the identified and connected face $z$ (a ($n-1$)-simplex) that resulted from the hypersphere puncture. The other faces (ie ($n-1$)-simplices) are connected in the usual way for tori constructions)\label{fig:stori}}}
+\end{figure}
+
+\begin{figure} 
+\centerline{\includegraphics[scale=0.4]{./stori_sum.pdf}}
+{\caption{The process of puncturing a new hypersphere on $\mathcal{S}_0\,\#\,\mathcal{S}_1$ can be repeated for any new minimiser point without loss of generality producing $S := S_0\,\#\,S_1\,\#\,\cdots\,\#\,S_{g - 1} \qquad  (g\text{ times})$ \label{fig:stori_sum}}}
+\end{figure}
+
 
 Any triangulation $\mathcal{K}$ of the topological space $\mathcal{S}$ is homeomorphic to $\mathcal{S}$, $\bold{H}_k(\mathcal{K}) \cong \bold{H}_k(\mathcal{S}) ~\forall k \subset \mathbb{Z}$. Note that this homomorphism is for a mod 2 homology between a triangulation $\mathcal{K}$ and the surface $\mathcal{S}$ and is thus undirected. A triangulation corresponding to all vertices and faces of $\mathcal{K}$ can be directed according to \Cref{def:h1}, \Cref{def:h2} and \Cref{def:h3} providing the directed simplicial complex $\mathcal{H}$. By construction we have, for an adequately sampled simplicial complex $\mathcal{H}$, an equality which exists between the cardinality of $\mathcal{M}$ and the Betti numbers of $\mathcal{S}$ as $|\mathcal{M}| = h_1 = \text{rank} (\bold{H}_1(\mathcal{S})) = \text{rank} (\bold{H}_1(\mathcal{K}))$. Here we invoke the invariance theorem
 
@@ -205,7 +235,6 @@ After adding any sampling point outside a domain $\textrm{st}\left( v_i \right)$
 
 This concludes the proof that any increase in $N$ will not further increase $|\mathcal{M}|$.
 \end{proof}
-
 
 It is important to note that \Cref{theorem:invariance_M} is only applicable to complexes with adequate sampling as defined, that is to say it is entirely possible that, in complexes with less that adequate sampling, two starting minimiser elements of $\mathcal{M}$ will converge to the same local minimum. This flaw is inherent in the fact that there is insufficient information to completely identify the minima of a surface (and could be overcome if some extra information about $f$ is known).
 

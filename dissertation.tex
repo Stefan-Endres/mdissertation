@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, %
+ \documentclass[a4paper, 12pt, %
 %draft,%
 pdftex]{report} % make report->book for two sided final publishing.
 %\fussy
@@ -49,11 +49,15 @@ pdftex]{report} % make report->book for two sided final publishing.
 \begin{document}
 \include{front}
 
-% Page numbering: Start at 1
 
+%\chapter*{Acknowledgements} \thispagestyle{empty} 
+%I would like to thank my advisers without whom this work would not be possible.
+\pagebreak
+% Page numbering: Start at 1
 \pagestyle{headings}
 \setcounter{page}{1}
 \pagenumbering{arabic}
+
 
 %\section{Introduction}
 \include{intro}
